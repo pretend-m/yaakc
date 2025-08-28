@@ -22,13 +22,13 @@ const defaultAlgorithm = algorithms[0];
 export const plugin: PluginDefinition = {
   authentication: {
     name: 'jwt',
-    label: 'JWT Bearer',
+    label: 'JWT',
     shortLabel: 'JWT',
     args: [
       {
         type: 'select',
         name: 'algorithm',
-        label: 'Algorithm',
+        label: '算法',
         hideLabel: true,
         defaultValue: defaultAlgorithm,
         options: algorithms.map((value) => ({ label: value === 'none' ? 'None' : value, value })),
@@ -36,7 +36,7 @@ export const plugin: PluginDefinition = {
       {
         type: 'text',
         name: 'secret',
-        label: 'Secret or Private Key',
+        label: '密钥或私钥',
         password: true,
         optional: true,
         multiLine: true,
@@ -44,12 +44,12 @@ export const plugin: PluginDefinition = {
       {
         type: 'checkbox',
         name: 'secretBase64',
-        label: 'Secret is base64 encoded',
+        label: '密钥为base64编码',
       },
       {
         type: 'editor',
         name: 'payload',
-        label: 'Payload',
+        label: '载荷',
         language: 'json',
         defaultValue: '{\n  "foo": "bar"\n}',
         placeholder: '{ }',

@@ -31,16 +31,16 @@ export function useDeleteSendHistory() {
       if (labels.length === 0) {
         showAlert({
           id: 'no-responses',
-          title: 'Nothing to Delete',
-          body: 'There is no Http, Grpc, or Websocket history',
+          title: '没有可删除的内容',
+          body: '当前没有Http,Grpc或Websocket的历史记录',
         });
         return;
       }
 
       const confirmed = await showConfirmDelete({
         id: 'delete-send-history',
-        title: 'Clear Send History',
-        description: <>Delete {labels.join(' and ')}?</>,
+        title: '清除发送历史记录',
+        description: <>删除 {labels.join(' 和 ')}?</>,
       });
       if (!confirmed) return false;
 

@@ -13,22 +13,23 @@ export const createEnvironmentAndActivate = createFastMutation<
   mutationKey: ['create_environment'],
   mutationFn: async (baseEnvironment) => {
     if (baseEnvironment == null) {
-      throw new Error('No base environment passed');
+      throw new Error('未通过基础环境');
     }
 
     const workspaceId = jotaiStore.get(activeWorkspaceIdAtom);
     if (workspaceId == null) {
-      throw new Error('Cannot create environment when no active workspace');
+      throw new Error('没有工作区时无法创建环境');
     }
 
     const name = await showPrompt({
       id: 'new-environment',
-      title: 'New Environment',
-      description: 'Create multiple environments with different sets of variables',
-      label: 'Name',
-      placeholder: 'My Environment',
-      defaultValue: 'My Environment',
-      confirmText: 'Create',
+      title: '新环境',
+      description: '创建多个环境，并为每个环境设置不同的变量值',
+      label: '名称',
+      placeholder: '我的环境',
+      defaultValue: '我的环境',
+      confirmText: '创建',
+      cancelText: '取消'
     });
     if (name == null) return null;
 

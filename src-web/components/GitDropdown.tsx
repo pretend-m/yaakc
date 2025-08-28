@@ -315,61 +315,62 @@ const GitMenuButton = forwardRef<HTMLButtonElement, HTMLAttributes<HTMLButtonEle
 );
 
 function SetupSyncDropdown({ workspaceMeta }: { workspaceMeta: WorkspaceMeta }) {
-  const { value: hidden, set: setHidden } = useKeyValue<Record<string, boolean>>({
-    key: 'setup_sync',
-    fallback: {},
-  });
-
-  if (hidden == null || hidden[workspaceMeta.workspaceId]) {
-    return null;
-  }
-
-  const banner = (
-    <Banner color="info">
-      When enabled, workspace data syncs to the chosen folder as text files, ideal for backup and
-      Git collaboration.
-    </Banner>
-  );
-
-  return (
-    <Dropdown
-      fullWidth
-      items={[
-        {
-          type: 'content',
-          label: banner,
-        },
-        {
-          color: 'success',
-          label: 'Open Workspace Settings',
-          leftSlot: <Icon icon="settings" />,
-          onSelect: () => openWorkspaceSettings('general'),
-        },
-        { type: 'separator' },
-        {
-          label: 'Hide This Message',
-          leftSlot: <Icon icon="eye_closed" />,
-          async onSelect() {
-            const confirmed = await showConfirm({
-              id: 'hide-sync-menu-prompt',
-              title: 'Hide Setup Message',
-              description: 'You can configure filesystem sync or Git it in the workspace settings',
-            });
-            if (confirmed) {
-              await setHidden((prev) => ({ ...prev, [workspaceMeta.workspaceId]: true }));
-            }
-          },
-        },
-      ]}
-    >
-      <GitMenuButton>
-        <div className="text-sm text-text-subtle grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2">
-          <Icon icon="wrench" />
-          <div className="truncate">Setup FS Sync or Git</div>
-        </div>
-      </GitMenuButton>
-    </Dropdown>
-  );
+  return null;
+  // const { value: hidden, set: setHidden } = useKeyValue<Record<string, boolean>>({
+  //   key: 'setup_sync',
+  //   fallback: {},
+  // });
+  //
+  // if (hidden == null || hidden[workspaceMeta.workspaceId]) {
+  //   return null;
+  // }
+  //
+  // const banner = (
+  //   <Banner color="info">
+  //     When enabled, workspace data syncs to the chosen folder as text files, ideal for backup and
+  //     Git collaboration.
+  //   </Banner>
+  // );
+  //
+  // return (
+  //   <Dropdown
+  //     fullWidth
+  //     items={[
+  //       {
+  //         type: 'content',
+  //         label: banner,
+  //       },
+  //       {
+  //         color: 'success',
+  //         label: 'Open Workspace Settings',
+  //         leftSlot: <Icon icon="settings" />,
+  //         onSelect: () => openWorkspaceSettings('general'),
+  //       },
+  //       { type: 'separator' },
+  //       {
+  //         label: 'Hide This Message',
+  //         leftSlot: <Icon icon="eye_closed" />,
+  //         async onSelect() {
+  //           const confirmed = await showConfirm({
+  //             id: 'hide-sync-menu-prompt',
+  //             title: 'Hide Setup Message',
+  //             description: 'You can configure filesystem sync or Git it in the workspace settings',
+  //           });
+  //           if (confirmed) {
+  //             await setHidden((prev) => ({ ...prev, [workspaceMeta.workspaceId]: true }));
+  //           }
+  //         },
+  //       },
+  //     ]}
+  //   >
+  //     <GitMenuButton>
+  //       <div className="text-sm text-text-subtle grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2">
+  //         <Icon icon="wrench" />
+  //         <div className="truncate">Setup FS Sync or Git</div>
+  //       </div>
+  //     </GitMenuButton>
+  //   </Dropdown>
+  // );
 }
 
 function SetupGitDropdown({

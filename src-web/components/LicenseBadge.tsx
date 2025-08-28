@@ -26,11 +26,12 @@ export function LicenseBadge() {
   }
 
   if (check.error) {
-    return (
-      <BadgeButton color="danger" onClick={() => openSettings.mutate('license')}>
-        License Error
-      </BadgeButton>
-    );
+    // return (
+    //   <BadgeButton color="danger" onClick={() => openSettings.mutate('license')}>
+    //     License Error
+    //   </BadgeButton>
+    // );
+    return null;
   }
 
   // Hasn't loaded yet
@@ -53,20 +54,21 @@ export function LicenseBadge() {
     return null;
   }
 
-  return (
-    <BadgeButton
-      color={detail.color}
-      onClick={async () => {
-        if (check.data.type === 'trialing') {
-          await setLicenseDetails((v) => ({
-            ...v,
-            hasDismissedTrial: true,
-          }));
-        }
-        openSettings.mutate('license');
-      }}
-    >
-      {detail.label}
-    </BadgeButton>
-  );
+  // return (
+  //   <BadgeButton
+  //     color={detail.color}
+  //     onClick={async () => {
+  //       if (check.data.type === 'trialing') {
+  //         await setLicenseDetails((v) => ({
+  //           ...v,
+  //           hasDismissedTrial: true,
+  //         }));
+  //       }
+  //       openSettings.mutate('license');
+  //     }}
+  //   >
+  //     {detail.label}
+  //   </BadgeButton>
+  // );
+  return null;
 }

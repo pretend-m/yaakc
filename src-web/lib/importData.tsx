@@ -17,7 +17,7 @@ export const importData = createFastMutation({
   onError: (err: string) => {
     showAlert({
       id: 'import-failed',
-      title: 'Import Failed',
+      title: '导入失败',
       size: 'md',
       body: <FormattedError>{err}</FormattedError>,
     });
@@ -26,7 +26,7 @@ export const importData = createFastMutation({
     return new Promise<void>((resolve, reject) => {
       showDialog({
         id: 'import',
-        title: 'Import Data',
+        title: '导入数据',
         size: 'sm',
         render: ({ hide }) => {
           const importAndHide = async (filePath: string) => {
@@ -60,7 +60,7 @@ async function performImport(filePath: string): Promise<boolean> {
 
   showDialog({
     id: 'import-complete',
-    title: 'Import Complete',
+    title: '导入完成',
     size: 'sm',
     hideX: true,
     render: ({ hide }) => {

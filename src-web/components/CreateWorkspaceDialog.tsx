@@ -75,16 +75,16 @@ export function CreateWorkspaceDialog({ hide }: Props) {
       />
       <div>
         <Label htmlFor={null} help={<EncryptionHelp />}>
-          Workspace encryption
+          加密工作区
         </Label>
         <Checkbox
           checked={setupEncryption}
           onChange={setSetupEncryption}
-          title="Enable Encryption"
+          title="启用加密"
         />
       </div>
       <Button type="submit" color="primary" className="w-full mt-3">
-        Create Workspace
+        创建工作区
       </Button>
     </VStack>
   );

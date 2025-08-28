@@ -22,7 +22,7 @@ export function useHeadersTab<T extends string>(
 
     const tab: TabItem = {
       value: tabValue,
-      label: label ?? 'Headers',
+      label: label ?? '请求头',
       rightSlot: <CountBadge count={numHeaders} />,
     };
 

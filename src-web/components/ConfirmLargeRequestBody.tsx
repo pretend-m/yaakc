@@ -55,9 +55,9 @@ export function ConfirmLargeRequestBody({ children, request }: Props) {
             onClick={async () => {
               const confirm = await showConfirm({
                 id: 'delete-body-' + request.id,
-                confirmText: 'Delete Body',
-                title: 'Delete Body Text',
-                description: 'Are you sure you want to delete the request body text?',
+                confirmText: '删除正文',
+                title: '删除正文',
+                description: '您确定要删除请求正文吗?',
                 color: 'danger',
               });
               if (confirm) {
@@ -65,7 +65,7 @@ export function ConfirmLargeRequestBody({ children, request }: Props) {
               }
             }}
           >
-            Delete Body
+            删除正文
           </Button>
         </HStack>
       </Banner>

@@ -29,7 +29,7 @@ export function MoveToWorkspaceDialog({ onDone, request, activeWorkspaceId }: Pr
   return (
     <VStack space={4} className="mb-4">
       <Select
-        label="New Workspace"
+        label="新建工作区"
         name="workspace"
         value={selectedWorkspaceId}
         onChange={setSelectedWorkspaceId}
@@ -74,13 +74,13 @@ export function MoveToWorkspaceDialog({ onDone, request, activeWorkspaceId }: Pr
                   hide();
                 }}
               >
-                Switch to Workspace
+                切换到工作区
               </Button>
             ),
           });
         }}
       >
-        Move
+        移动
       </Button>
     </VStack>
   );

@@ -235,11 +235,11 @@ function WorkspaceBody() {
         bottomSlot={
           <HStack space={1} justifyContent="center" className="mt-3">
             <Button variant="border" size="sm" onClick={() => importData.mutate()}>
-              Import
+              导入
             </Button>
             <CreateDropdown hideFolder>
               <Button variant="border" forDropdown size="sm">
-                New Request
+                新建请求
               </Button>
             </CreateDropdown>
           </HStack>

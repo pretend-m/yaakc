@@ -17,7 +17,7 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
 
     const tab: TabItem = {
       value: tabValue,
-      label: 'Auth',
+      label: '继承',
       options: {
         value: model.authenticationType,
         items: [
@@ -28,7 +28,7 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
           })),
           { type: 'separator' },
           {
-            label: 'Inherit from Parent',
+            label: '继承',
             shortLabel:
               inheritedAuth != null && inheritedAuth.authenticationType != 'none' ? (
                 <HStack space={1.5}>
@@ -37,15 +37,15 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
                   <IconTooltip
                     icon="magic_wand"
                     iconSize="xs"
-                    content="Authentication was inherited from an ancestor"
+                    content="身份验证继承自上级/父级配置"
                   />
                 </HStack>
               ) : (
-                'Auth'
+                '继承'
               ),
             value: null,
           },
-          { label: 'No Auth', shortLabel: 'No Auth', value: 'none' },
+          { label: '无认证', shortLabel: '无认证', value: 'none' },
         ],
         onChange: async (authenticationType) => {
           let authentication: Folder['authentication'] = model.authentication;

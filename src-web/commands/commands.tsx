@@ -21,20 +21,20 @@ export const createFolder = createFastMutation<
   mutationFn: async (patch) => {
     const workspaceId = jotaiStore.get(activeWorkspaceIdAtom);
     if (workspaceId == null) {
-      throw new Error("Cannot create folder when there's no active workspace");
+      throw new Error("没有工作区时无法创建文件夹");
     }
 
     if (!patch.name) {
       const name = await showPrompt({
         id: 'new-folder',
-        label: 'Name',
-        defaultValue: 'Folder',
-        title: 'New Folder',
+        label: '名称',
+        defaultValue: '文件夹',
+        title: '新文件夹',
         required: true,
-        confirmText: 'Create',
-        placeholder: 'Name',
+        confirmText: '创建',
+        placeholder: '名称',
       });
-      if (name == null) throw new Error('No name provided to create folder');
+      if (name == null) throw new Error('未提供创建文件夹的名称');
 
       patch.name = name;
     }
@@ -75,8 +75,8 @@ export const syncWorkspace = createFastMutation<
       ? true
       : await showConfirm({
           id: 'commit-sync',
-          title: 'Changes Detected',
-          confirmText: 'Apply Changes',
+          title: '检测到更改',
+          confirmText: '应用更改',
           color: isDeletingWorkspace ? 'danger' : 'primary',
           description: (
             <VStack space={3}>

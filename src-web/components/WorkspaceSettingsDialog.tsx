@@ -70,10 +70,10 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
       className="pt-2 pb-2 pl-3 pr-1"
       addBorders
       tabs={[
-        { value: TAB_GENERAL, label: 'General' },
+        { value: TAB_GENERAL, label: '常规' },
         {
           value: TAB_DATA,
-          label: 'Directory Sync',
+          label: '同步目录',
         },
         ...authTab,
         ...headersTab,
@@ -96,7 +96,7 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
           <PlainInput
             required
             hideLabel
-            placeholder="Workspace Name"
+            placeholder="工作区名称"
             label="Name"
             defaultValue={workspace.name}
             className="!text-base font-sans"
@@ -105,7 +105,7 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
 
           <MarkdownEditor
             name="workspace-description"
-            placeholder="Workspace description"
+            placeholder="工作区描述"
             className="border border-border px-2"
             defaultValue={workspace.description}
             stateKey={`description.${workspace.id}`}
@@ -128,7 +128,7 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
               variant="border"
               size="xs"
             >
-              Delete Workspace
+              删除工作区
             </Button>
             <InlineCode className="flex gap-1 items-center text-primary pl-2.5">
               {workspaceId}
@@ -136,7 +136,7 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
                 className="opacity-70 !text-primary"
                 size="2xs"
                 iconSize="sm"
-                title="Copy workspace ID"
+                title="复制工作区Id"
                 text={workspaceId}
               />
             </InlineCode>

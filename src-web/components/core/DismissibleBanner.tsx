@@ -28,7 +28,7 @@ export function DismissibleBanner({
         onClick={() => setDismissed((d) => !d)}
         title="Dismiss message"
       >
-        Dismiss
+        解除
       </Button>
     </Banner>
   );

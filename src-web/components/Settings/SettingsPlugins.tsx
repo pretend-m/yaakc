@@ -41,14 +41,14 @@ export function SettingsPlugins() {
     <div className="h-full">
       <Tabs
         value={tab}
-        label="Plugins"
+        label="插件"
         onChangeValue={setTab}
         addBorders
         tabListClassName="!-ml-3"
         tabs={[
-          { label: 'Discover', value: 'search' },
+          { label: '搜索', value: 'search' },
           {
-            label: 'Installed',
+            label: '已安装',
             value: 'installed',
             rightSlot: <CountBadge count={plugins.length} />,
           },
@@ -80,20 +80,20 @@ export function SettingsPlugins() {
                       setDirectory(null);
                     }}
                   >
-                    Add Plugin
+                    添加插件
                   </Button>
                 )}
                 <IconButton
                   size="sm"
                   icon="refresh"
-                  title="Reload plugins"
+                  title="重新加载插件"
                   spin={refreshPlugins.isPending}
                   onClick={() => refreshPlugins.mutate()}
                 />
                 <IconButton
                   size="sm"
                   icon="help"
-                  title="View documentation"
+                  title="查看文档"
                   onClick={() =>
                     openUrl('https://feedback.yaak.app/help/articles/6911763-quick-start')
                   }
@@ -188,7 +188,7 @@ function PluginTableRow({
             <Button
               variant="border"
               color="success"
-              title={`Update to ${latestVersion}`}
+              title={`更新 to ${latestVersion}`}
               size="xs"
               isLoading={installPluginMutation.isPending}
               onClick={() => installPluginMutation.mutate(name)}
@@ -199,7 +199,7 @@ function PluginTableRow({
             <Button
               variant="border"
               color="primary"
-              title={`Install ${latestVersion}`}
+              title={`安装 ${latestVersion}`}
               size="xs"
               isLoading={installPluginMutation.isPending}
               onClick={() => installPluginMutation.mutate(name)}
@@ -210,7 +210,7 @@ function PluginTableRow({
           {uninstall != null && (
             <Button
               size="xs"
-              title="Uninstall plugin"
+              title="卸载插件"
               variant="border"
               isLoading={uninstall.isPending}
               onClick={() => uninstall.mutate()}
@@ -249,7 +249,7 @@ function PluginSearch() {
             <LoadingIcon size="xl" className="text-text-subtlest" />
           </EmptyStateText>
         ) : (results.data.plugins ?? []).length === 0 ? (
-          <EmptyStateText>No plugins found</EmptyStateText>
+          <EmptyStateText>未找到插件</EmptyStateText>
         ) : (
           <Table>
             <TableHead>
@@ -277,9 +277,9 @@ function InstalledPlugins() {
   return plugins.length === 0 ? (
     <div className="pb-4">
       <EmptyStateText className="text-center">
-        Plugins extend the functionality of Yaak.
+        插件可扩展 Yaak 的功能
         <br />
-        Add your first plugin to get started.
+        添加您的第一个插件以开始使用
       </EmptyStateText>
     </div>
   ) : (
@@ -312,7 +312,7 @@ function usePromptUninstall(pluginId: string | null, name: string) {
         confirmText: 'Uninstall',
         description: (
           <>
-            Permanently uninstall <InlineCode>{name}</InlineCode>?
+            永久卸载 <InlineCode>{name}</InlineCode>?
           </>
         ),
       });

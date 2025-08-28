@@ -40,6 +40,8 @@ export function FormMultipartEditor({ request, forceUpdateKey, onChange }: Props
 
   return (
     <PairEditor
+      namePlaceholder="名称"
+      valuePlaceholder="值"
       valueAutocompleteFunctions
       valueAutocompleteVariables
       nameAutocompleteVariables

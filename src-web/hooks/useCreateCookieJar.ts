@@ -16,11 +16,12 @@ export function useCreateCookieJar() {
 
       const name = await showPrompt({
         id: 'new-cookie-jar',
-        title: 'New CookieJar',
-        placeholder: 'My Jar',
-        confirmText: 'Create',
-        label: 'Name',
-        defaultValue: 'My Jar',
+        title: '新建CookieJar',
+        placeholder: '我的Jar',
+        confirmText: '创建',
+        cancelText: '取消',
+        label: '名称',
+        defaultValue: '我的Jar',
       });
       if (name == null) return null;
 

@@ -52,11 +52,11 @@ export const EnvironmentActionsDropdown = memo(function EnvironmentActionsDropdo
         [activeEnvironment?.id],
       ),
       ...((subEnvironments.length > 0
-        ? [{ type: 'separator', label: 'Environments' }]
+        ? [{ type: 'separator', label: '环境' }]
         : []) as DropdownItem[]),
       {
         key: 'edit',
-        label: 'Manage Environments',
+        label: '管理环境',
         hotKeyAction: 'environmentEditor.toggle',
         leftSlot: <Icon icon="box" />,
         onSelect: showEnvironmentDialog,
@@ -83,7 +83,7 @@ export const EnvironmentActionsDropdown = memo(function EnvironmentActionsDropdo
         {...buttonProps}
       >
         <EnvironmentColorIndicator environment={activeEnvironment ?? null} />
-        {activeEnvironment?.name ?? (hasBaseVars ? 'Environment' : 'No Environment')}
+        {activeEnvironment?.name ?? (hasBaseVars ? '环境' : '无环境')}
       </Button>
     </Dropdown>
   );

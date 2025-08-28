@@ -6,7 +6,7 @@ const NEWLINE = '\\\n ';
 export const plugin: PluginDefinition = {
   grpcRequestActions: [
     {
-      label: 'Copy as gRPCurl',
+      label: '复制为gRPCurl命令',
       icon: 'copy',
       async onSelect(ctx, args) {
         const rendered_request = await ctx.grpcRequest.render({
@@ -16,7 +16,7 @@ export const plugin: PluginDefinition = {
         const data = await convert(rendered_request, args.protoFiles);
         await ctx.clipboard.copyText(data);
         await ctx.toast.show({
-          message: 'Command copied to clipboard',
+          message: '命令已复制到剪贴板',
           icon: 'copy',
           color: 'success',
         });

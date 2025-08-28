@@ -64,7 +64,7 @@ function ExportDataDialogContent({
     const workspace = ids.length === 1 ? workspaces.find((w) => w.id === ids[0]) : undefined;
     const slug = workspace ? slugify(workspace.name, { lower: true }) : 'workspaces';
     const exportPath = await save({
-      title: 'Export Data',
+      title: '导出数据',
       defaultPath: `yaak.${slug}.json`,
     });
     if (exportPath == null) {

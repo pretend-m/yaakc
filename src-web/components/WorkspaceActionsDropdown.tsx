@@ -46,7 +46,7 @@ export const WorkspaceActionsDropdown = memo(function WorkspaceActionsDropdown({
 
     const itemsAfter: DropdownItem[] = [
       {
-        label: 'Workspace Settings',
+        label: '工作区设置',
         leftSlot: <Icon icon="settings" />,
         hotKeyAction: 'workspace_settings.show',
         onSelect: openWorkspaceSettings,
@@ -61,27 +61,26 @@ export const WorkspaceActionsDropdown = memo(function WorkspaceActionsDropdown({
         },
       },
       {
-        label: 'Clear Send History',
+        label: '清除历史记录',
         color: 'warning',
         leftSlot: <Icon icon="history" />,
         onSelect: deleteSendHistory,
       },
       { type: 'separator' },
       {
-        label: 'New Workspace',
+        label: '新建工作区',
         leftSlot: <Icon icon="plus" />,
         onSelect: createWorkspace,
       },
       {
-        label: 'Open Existing Workspace',
+        label: '打开现有工作区',
         leftSlot: <Icon icon="folder_open" />,
         onSelect: async () => {
           const dir = await open({
-            title: 'Select Workspace Directory',
+            title: '选择工作区目录',
             directory: true,
             multiple: false,
           });
-
           if (dir == null) return;
           openWorkspaceFromSyncDir.mutate(dir);
         },
@@ -106,7 +105,7 @@ export const WorkspaceActionsDropdown = memo(function WorkspaceActionsDropdown({
     showDialog({
       id: 'switch-workspace',
       size: 'sm',
-      title: 'Switch Workspace',
+      title: '切换工作空间',
       render: ({ hide }) => <SwitchWorkspaceDialog workspace={workspace} hide={hide} />,
     });
   }, []);

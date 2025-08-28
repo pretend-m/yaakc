@@ -12,7 +12,7 @@ export function openWorkspaceSettings(tab?: WorkspaceSettingsTab) {
   if (workspaceId == null) return;
   showDialog({
     id: 'workspace-settings',
-    title: 'Workspace Settings',
+    title: '工作区设置',
     size: 'md',
     className: 'h-[calc(100vh-5rem)] !max-h-[40rem]',
     noPadding: true,

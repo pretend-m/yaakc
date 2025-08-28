@@ -44,17 +44,18 @@ export const RequestMethodDropdown = memo(function RequestMethodDropdown({
     () => [
       {
         key: 'custom',
-        label: 'CUSTOM',
+        label: '自定义',
         leftSlot: <Icon icon="sparkles" />,
         onSelect: async () => {
           const newMethod = await showPrompt({
             id: 'custom-method',
             label: 'Http Method',
             defaultValue: '',
-            title: 'Custom Method',
-            confirmText: 'Save',
-            description: 'Enter a custom method name',
-            placeholder: 'CUSTOM',
+            title: '自定义方式',
+            confirmText: '保存',
+            description: '输入自定义方式名称',
+            placeholder: '自定义',
+            cancelText: '取消',
           });
           if (newMethod == null) return;
           await handleChange(newMethod);

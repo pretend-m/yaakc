@@ -153,17 +153,17 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
         options: {
           value: activeRequest.bodyType,
           items: [
-            { type: 'separator', label: 'Form Data' },
-            { label: 'Url Encoded', value: BODY_TYPE_FORM_URLENCODED },
-            { label: 'Multi-Part', value: BODY_TYPE_FORM_MULTIPART },
-            { type: 'separator', label: 'Text Content' },
-            { label: 'GraphQL', value: BODY_TYPE_GRAPHQL },
-            { label: 'JSON', value: BODY_TYPE_JSON },
-            { label: 'XML', value: BODY_TYPE_XML },
-            { label: 'Other', value: BODY_TYPE_OTHER },
-            { type: 'separator', label: 'Other' },
-            { label: 'Binary File', value: BODY_TYPE_BINARY },
-            { label: 'No Body', shortLabel: 'Body', value: BODY_TYPE_NONE },
+            { type: 'separator', label: '表单数据' },
+            { label: 'x-www-form-urlencoded', value: BODY_TYPE_FORM_URLENCODED },
+            { label: 'form-data', value: BODY_TYPE_FORM_MULTIPART },
+            { type: 'separator', label: '文本内容' },
+            { label: 'graphql', value: BODY_TYPE_GRAPHQL },
+            { label: 'json', value: BODY_TYPE_JSON },
+            { label: 'xml', value: BODY_TYPE_XML },
+            { label: 'other', value: BODY_TYPE_OTHER },
+            { type: 'separator', label: '其他' },
+            { label: 'binary', value: BODY_TYPE_BINARY },
+            { label: 'none', shortLabel: 'none', value: BODY_TYPE_NONE },
           ],
           onChange: async (bodyType) => {
             if (bodyType === activeRequest.bodyType) return;
@@ -174,7 +174,7 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
                 id: 'switched-method',
                 message: (
                   <>
-                    Request method switched to <InlineCode>POST</InlineCode>
+                    请求方式已切换为 <InlineCode>POST</InlineCode>
                   </>
                 ),
               });
@@ -217,13 +217,13 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
       {
         value: TAB_PARAMS,
         rightSlot: <CountBadge count={urlParameterPairs.length} />,
-        label: 'Params',
+        label: '参数',
       },
       ...headersTab,
       ...authTab,
       {
         value: TAB_DESCRIPTION,
-        label: 'Info',
+        label: '信息',
       },
     ],
     [
@@ -348,7 +348,7 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
           <Tabs
             key={activeRequest.id} // Freshen tabs on request change
             value={activeTab}
-            label="Request"
+            label="请求"
             onChangeValue={setActiveTab}
             tabs={tabs}
             tabListClassName="mt-1 !mb-1.5"
@@ -439,14 +439,14 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
                     stateKey={`other.${activeRequest.id}`}
                   />
                 ) : (
-                  <EmptyStateText>No Body</EmptyStateText>
+                  <EmptyStateText>无请求</EmptyStateText>
                 )}
               </ConfirmLargeRequestBody>
             </TabContent>
             <TabContent value={TAB_DESCRIPTION}>
               <div className="grid grid-rows-[auto_minmax(0,1fr)] h-full">
                 <PlainInput
-                  label="Request Name"
+                  label="请求名称"
                   hideLabel
                   forceUpdateKey={updateKey}
                   defaultValue={activeRequest.name}
@@ -457,7 +457,7 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
                 />
                 <MarkdownEditor
                   name="request-description"
-                  placeholder="Request description"
+                  placeholder="请求描述"
                   defaultValue={activeRequest.description}
                   stateKey={`description.${activeRequest.id}`}
                   forceUpdateKey={updateKey}

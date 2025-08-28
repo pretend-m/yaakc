@@ -25,12 +25,12 @@ export function RecentWebsocketConnectionsDropdown({
     <Dropdown
       items={[
         {
-          label: 'Clear Connection',
+          label: '清除连接',
           onSelect: () => deleteModel(activeConnection),
           disabled: connections.length === 0,
         },
         {
-          label: `Clear ${pluralizeCount('Connection', connections.length)}`,
+          label: `清除 ${pluralizeCount('Connection', connections.length)}`,
           onSelect: () => {
             const request = getModel('websocket_request', activeConnection.requestId);
             if (request != null) {
@@ -40,7 +40,7 @@ export function RecentWebsocketConnectionsDropdown({
           hidden: connections.length <= 1,
           disabled: connections.length === 0,
         },
-        { type: 'separator', label: 'History' },
+        { type: 'separator', label: '历史' },
         ...connections.map((c) => ({
           label: (
             <HStack space={2}>

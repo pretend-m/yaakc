@@ -44,7 +44,7 @@ export function MarkdownEditor({
 
   const preview =
     defaultValue.length === 0 ? (
-      <p className="text-text-subtlest">No description</p>
+      <p className="text-text-subtlest">无描述</p>
     ) : (
       <div className="pr-1.5 overflow-y-auto max-h-full [&_*]:cursor-auto [&_*]:select-auto">
         <Markdown className="max-w-lg select-auto cursor-auto">{defaultValue}</Markdown>

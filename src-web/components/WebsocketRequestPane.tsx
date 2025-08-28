@@ -95,18 +95,18 @@ export function WebsocketRequestPane({ style, fullHeight, className, activeReque
     return [
       {
         value: TAB_MESSAGE,
-        label: 'Message',
+        label: '消息',
       } as TabItem,
       {
         value: TAB_PARAMS,
         rightSlot: <CountBadge count={urlParameterPairs.length} />,
-        label: 'Params',
+        label: '参数',
       },
       ...headersTab,
       ...authTab,
       {
         value: TAB_DESCRIPTION,
-        label: 'Info',
+        label: '信息',
       },
     ];
   }, [authTab, headersTab, urlParameterPairs.length]);

@@ -37,14 +37,14 @@ export function UrlParametersEditor({ pairs, forceUpdateKey, onChange, stateKey 
         forceUpdateKey={forceUpdateKey + urlParametersKey}
         nameAutocompleteFunctions
         nameAutocompleteVariables
-        namePlaceholder="param_name"
+        namePlaceholder="参数名称"
         onChange={onChange}
         pairs={pairs}
-        preferenceName="url_parameters"
+        preferenceName="URL参数"
         stateKey={stateKey}
         valueAutocompleteFunctions
         valueAutocompleteVariables
-        valuePlaceholder="Value"
+        valuePlaceholder="值"
       />
     </VStack>
   );

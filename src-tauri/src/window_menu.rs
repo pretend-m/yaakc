@@ -19,7 +19,7 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
     let window_menu = Submenu::with_id_and_items(
         app_handle,
         WINDOW_SUBMENU_ID,
-        "Window",
+        "窗口",
         true,
         &[
             &PredefinedMenuItem::minimize(app_handle, None)?,
@@ -33,13 +33,13 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
     let help_menu = Submenu::with_id_and_items(
         app_handle,
         HELP_SUBMENU_ID,
-        "Help",
+        "帮助",
         true,
         &[
             #[cfg(not(target_os = "macos"))]
             &PredefinedMenuItem::about(app_handle, None, Some(about_metadata.clone()))?,
             #[cfg(target_os = "macos")]
-            &MenuItemBuilder::with_id("open_feedback".to_string(), "Give Feedback")
+            &MenuItemBuilder::with_id("open_feedback".to_string(), "反馈")
                 .build(app_handle)?,
         ],
     )?;
@@ -55,7 +55,7 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
                 &[
                     &PredefinedMenuItem::about(app_handle, None, Some(about_metadata))?,
                     &PredefinedMenuItem::separator(app_handle)?,
-                    &MenuItemBuilder::with_id("settings".to_string(), "Settings")
+                    &MenuItemBuilder::with_id("settings".to_string(), "设置")
                         .accelerator("CmdOrCtrl+,")
                         .build(app_handle)?,
                     &PredefinedMenuItem::separator(app_handle)?,
@@ -85,7 +85,7 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
             )))]
             &Submenu::with_items(
                 app_handle,
-                "File",
+                "文件",
                 true,
                 &[
                     &PredefinedMenuItem::close_window(app_handle, None)?,
@@ -95,7 +95,7 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
             )?,
             &Submenu::with_items(
                 app_handle,
-                "Edit",
+                "编辑",
                 true,
                 &[
                     &PredefinedMenuItem::undo(app_handle, None)?,
@@ -109,20 +109,20 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
             )?,
             &Submenu::with_items(
                 app_handle,
-                "View",
+                "视图",
                 true,
                 &[
                     #[cfg(target_os = "macos")]
                     &PredefinedMenuItem::fullscreen(app_handle, None)?,
                     #[cfg(target_os = "macos")]
                     &PredefinedMenuItem::separator(app_handle)?,
-                    &MenuItemBuilder::with_id("zoom_reset".to_string(), "Zoom to Actual Size")
+                    &MenuItemBuilder::with_id("zoom_reset".to_string(), "缩放到实际大小")
                         .accelerator("CmdOrCtrl+0")
                         .build(app_handle)?,
-                    &MenuItemBuilder::with_id("zoom_in".to_string(), "Zoom In")
+                    &MenuItemBuilder::with_id("zoom_in".to_string(), "放大")
                         .accelerator("CmdOrCtrl+=")
                         .build(app_handle)?,
-                    &MenuItemBuilder::with_id("zoom_out".to_string(), "Zoom Out")
+                    &MenuItemBuilder::with_id("zoom_out".to_string(), "缩小")
                         .accelerator("CmdOrCtrl+-")
                         .build(app_handle)?,
                 ],
@@ -132,20 +132,20 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
             #[cfg(dev)]
             &Submenu::with_items(
                 app_handle,
-                "Develop",
+                "开发",
                 true,
                 &[
-                    &MenuItemBuilder::with_id("dev.refresh".to_string(), "Refresh")
+                    &MenuItemBuilder::with_id("dev.refresh".to_string(), "刷新")
                         .accelerator("CmdOrCtrl+Shift+r")
                         .build(app_handle)?,
-                    &MenuItemBuilder::with_id("dev.toggle_devtools".to_string(), "Open Devtools")
+                    &MenuItemBuilder::with_id("dev.toggle_devtools".to_string(), "打开开发者工具")
                         .accelerator("CmdOrCtrl+Option+i")
                         .build(app_handle)?,
-                    &MenuItemBuilder::with_id("dev.reset_size".to_string(), "Reset Size")
+                    &MenuItemBuilder::with_id("dev.reset_size".to_string(), "重置大小")
                         .build(app_handle)?,
                     &MenuItemBuilder::with_id(
                         "dev.generate_theme_css".to_string(),
-                        "Generate Theme CSS",
+                        "生成主题CSS",
                     )
                     .build(app_handle)?,
                 ],

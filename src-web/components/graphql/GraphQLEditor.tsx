@@ -84,14 +84,14 @@ export function GraphQLEditor({ request, onChange, baseRequest, ...extraEditorPr
                   hidden: !error,
                   label: (
                     <Banner color="danger">
-                      <p className="mb-1">Schema introspection failed</p>
+                      <p className="mb-1">结构分析失败</p>
                       <Button
                         size="xs"
                         color="danger"
                         variant="border"
                         onClick={() => {
                           showDialog({
-                            title: 'Introspection Failed',
+                            title: '结构分析失败',
                             size: 'sm',
                             id: 'introspection-failed',
                             render: ({ hide }) => (
@@ -115,7 +115,7 @@ export function GraphQLEditor({ request, onChange, baseRequest, ...extraEditorPr
                           });
                         }}
                       >
-                        View Error
+                        查看错误
                       </Button>
                     </Banner>
                   ),
@@ -133,14 +133,14 @@ export function GraphQLEditor({ request, onChange, baseRequest, ...extraEditorPr
                   },
                 },
                 {
-                  label: 'Introspect Schema',
+                  label: '检查结构',
                   leftSlot: <Icon icon="refresh" spin={isLoading} />,
                   keepOpenOnSelect: true,
                   onSelect: refetch,
                 },
-                { type: 'separator', label: 'Setting' },
+                { type: 'separator', label: '设置' },
                 {
-                  label: 'Automatic Introspection',
+                  label: '自动结构',
                   onSelect: () => {
                     setAutoIntrospectDisabled({
                       ...autoIntrospectDisabled,
@@ -162,12 +162,12 @@ export function GraphQLEditor({ request, onChange, baseRequest, ...extraEditorPr
               <Button
                 size="sm"
                 variant="border"
-                title="Refetch Schema"
+                title="重新拉取结构定义"
                 isLoading={isLoading}
                 color={error ? 'danger' : 'default'}
                 forDropdown
               >
-                {error ? 'Introspection Failed' : schema ? 'Schema' : 'No Schema'}
+                {error ? '结构分析失败' : schema ? '结构' : '无结构'}
               </Button>
             </Dropdown>
           )}
@@ -206,7 +206,7 @@ export function GraphQLEditor({ request, onChange, baseRequest, ...extraEditorPr
       />
       <div className="grid grid-rows-[auto_minmax(0,1fr)] grid-cols-1 min-h-[5rem]">
         <Separator dashed className="pb-1">
-          Variables
+          变量
         </Separator>
         <Editor
           language="json"

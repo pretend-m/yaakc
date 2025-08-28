@@ -63,8 +63,8 @@ export const EnvironmentEditDialog = function ({ initialEnvironment }: Props) {
   const handleDuplicateEnvironment = useCallback(async (environment: Environment) => {
     const name = await showPrompt({
       id: 'duplicate-environment',
-      title: 'Duplicate Environment',
-      label: 'Name',
+      title: '复制环境',
+      label: '名称',
       defaultValue: environment.name,
     });
     if (name) {
@@ -244,17 +244,17 @@ const EnvironmentEditor = function ({
         {isEncryptionEnabled ? (
           promptToEncrypt ? (
             <BadgeButton color="notice" onClick={() => encryptEnvironment(selectedEnvironment)}>
-              Encrypt All Variables
+              加密所有变量
             </BadgeButton>
           ) : (
             <BadgeButton color="secondary" onClick={setupOrConfigureEncryption}>
-              Encryption Settings
+              加密设置
             </BadgeButton>
           )
         ) : (
           <>
             <BadgeButton color="secondary" onClick={() => valueVisibility.set((v) => !v)}>
-              {valueVisibility.value ? 'Conceal Values' : 'Reveal Values'}
+              {valueVisibility.value ? '隐藏值' : '显示值'}
             </BadgeButton>
           </>
         )}
@@ -265,8 +265,7 @@ const EnvironmentEditor = function ({
           color="notice"
           className="mr-3"
         >
-          This environment is sharable. Ensure variable values are encrypted to avoid accidental
-          leaking of secrets during directory sync or data export.
+          该环境为可共享环境。请加密变量值，以防在目录同步或数据导出时意外泄露敏感信息
         </DismissibleBanner>
       )}
       <div className="h-full pr-2 pb-2 grid grid-rows-[minmax(0,1fr)] overflow-auto">
@@ -274,7 +273,8 @@ const EnvironmentEditor = function ({
           allowMultilineValues
           preferenceName="environment"
           nameAutocomplete={nameAutocomplete}
-          namePlaceholder="VAR_NAME"
+          namePlaceholder="名称"
+          valuePlaceholder="值"
           nameValidate={validateName}
           valueType={valueType}
           valueAutocompleteVariables
@@ -357,21 +357,21 @@ function SidebarButton({
         onClose={() => setShowContextMenu(null)}
         items={[
           {
-            label: 'Rename',
+            label: '重命名',
             leftSlot: <Icon icon="pencil" />,
             hidden: environment.base,
             onSelect: async () => {
               const name = await showPrompt({
                 id: 'rename-environment',
-                title: 'Rename Environment',
+                title: '重命名环境',
                 description: (
                   <>
                     Enter a new name for <InlineCode>{environment.name}</InlineCode>
                   </>
                 ),
-                label: 'Name',
-                confirmText: 'Save',
-                placeholder: 'New Name',
+                label: '名称',
+                confirmText: '保存',
+                placeholder: '新名称',
                 defaultValue: environment.name,
               });
               if (name == null) return;
@@ -381,7 +381,7 @@ function SidebarButton({
           ...((duplicateEnvironment
             ? [
                 {
-                  label: 'Duplicate',
+                  label: '复制',
                   leftSlot: <Icon icon="copy" />,
                   onSelect: () => {
                     duplicateEnvironment?.(environment);
@@ -396,15 +396,13 @@ function SidebarButton({
             onSelect: async () => showColorPicker(environment),
           },
           {
-            label: `Make ${environment.public ? 'Private' : 'Sharable'}`,
+            label: `设为${environment.public ? '私有' : '可分享'}`,
             leftSlot: <Icon icon={environment.public ? 'eye_closed' : 'eye'} />,
             rightSlot: (
               <IconTooltip
                 content={
                   <>
-                    Sharable environments will be included in Directory Sync or data export. It is
-                    recommended to encrypt all variable values within sharable environments to
-                    prevent accidentally leaking secrets.
+                    可共享环境将被包含在目录同步或数据导出中。建议对可共享环境中的所有变量值进行加密，以防止意外泄露敏感信息
                   </>
                 }
               />
@@ -417,7 +415,7 @@ function SidebarButton({
             ? [
                 {
                   color: 'danger',
-                  label: 'Delete',
+                  label: '删除',
                   leftSlot: <Icon icon="trash" />,
                   onSelect: () => {
                     deleteEnvironment(environment);
@@ -434,6 +432,6 @@ function SidebarButton({
 const sharableTooltip = (
   <IconTooltip
     icon="eye"
-    content="This environment will be included in Directory Sync and data exports"
+    content="此环境会参与目录同步及数据导出"
   />
 );

@@ -58,19 +58,19 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
     () => [
       {
         value: TAB_BODY,
-        label: 'Preview Mode',
+        label: '格式化',
         options: {
           value: viewMode,
           onChange: setViewMode,
           items: [
-            { label: 'Pretty', value: 'pretty' },
-            ...(mimeType?.startsWith('image') ? [] : [{ label: 'Raw', value: 'raw' }]),
+            { label: '美化', value: 'pretty' },
+            ...(mimeType?.startsWith('image') ? [] : [{ label: '原始', value: 'raw' }]),
           ],
         },
       },
       {
         value: TAB_HEADERS,
-        label: 'Headers',
+        label: '请求头',
         rightSlot: (
           <CountBadge
             count={activeResponse?.headers.filter((h) => h.name && h.value).length ?? 0}
@@ -79,7 +79,7 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
       },
       {
         value: TAB_INFO,
-        label: 'Info',
+        label: '信息',
       },
     ],
     [activeResponse?.headers, mimeType, setViewMode, viewMode],

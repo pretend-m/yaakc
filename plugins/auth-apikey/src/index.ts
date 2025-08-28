@@ -3,37 +3,37 @@ import type { PluginDefinition } from '@yaakapp/api';
 export const plugin: PluginDefinition = {
   authentication: {
     name: 'apikey',
-    label: 'API Key',
-    shortLabel: 'API Key',
+    label: 'API密钥',
+    shortLabel: 'API密钥',
     args: [
       {
         type: 'select',
         name: 'location',
-        label: 'Behavior',
+        label: '行为',
         defaultValue: 'header',
         options: [
-          { label: 'Insert Header', value: 'header' },
-          { label: 'Append Query Parameter', value: 'query' },
+          { label: '请求头', value: 'header' },
+          { label: '查询参数', value: 'query' },
         ],
       },
       {
         type: 'text',
         name: 'key',
-        label: 'Key',
+        label: '密钥',
         dynamic: (_ctx, { values }) => {
           return values.location === 'query' ? {
-            label: 'Parameter Name',
-            description: 'The name of the query parameter to add to the request',
+            label: '参数名称',
+            description: '要添加到请求中的查询参数名称',
           } : {
-            label: 'Header Name',
-            description: 'The name of the header to add to the request',
+            label: '请求头名称',
+            description: '要添加到请求头中的名称',
           };
         },
       },
       {
         type: 'text',
         name: 'value',
-        label: 'API Key',
+        label: 'API密钥',
         optional: true,
         password: true,
       },

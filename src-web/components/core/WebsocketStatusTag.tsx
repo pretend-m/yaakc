@@ -13,18 +13,18 @@ export function WebsocketStatusTag({ connection, className }: Props) {
   let colorClass = 'text-text-subtle';
 
   if (error) {
-    label = 'ERROR';
+    label = '异常';
     colorClass = 'text-danger';
   } else if (state === 'connected') {
-    label = 'CONNECTED';
+    label = '已连接';
     colorClass = 'text-success';
   } else if (state === 'closing') {
-    label = 'CLOSING';
+    label = '关闭';
   } else if (state === 'closed') {
-    label = 'CLOSED';
+    label = '关闭';
     colorClass = 'text-warning';
   } else {
-    label = 'CONNECTING';
+    label = '连接';
   }
 
   return <span className={classNames(className, 'font-mono', colorClass)}>{label}</span>;

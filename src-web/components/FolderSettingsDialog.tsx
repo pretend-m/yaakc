@@ -61,14 +61,14 @@ export function FolderSettingsDialog({ folderId, tab }: Props) {
       <TabContent value={TAB_GENERAL} className="pt-3 overflow-y-auto h-full px-4">
         <VStack space={3} className="pb-3 h-full">
           <Input
-            label="Folder Name"
+            label="文件夹名称"
             defaultValue={folder.name}
             onChange={(name) => patchModel(folder, { name })}
             stateKey={`name.${folder.id}`}
           />
           <MarkdownEditor
-            name="folder-description"
-            placeholder="Folder description"
+            name="文件夹描述"
+            placeholder="文件夹描述"
             className="border border-border px-2"
             defaultValue={folder.description}
             stateKey={`description.${folder.id}`}

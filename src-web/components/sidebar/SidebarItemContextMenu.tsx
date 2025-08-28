@@ -99,7 +99,7 @@ export function SidebarItemContextMenu({ child, show, close }: Props) {
       return [
         ...requestItems,
         {
-          label: 'Rename',
+          label: '重命名',
           leftSlot: <Icon icon="pencil" />,
           onSelect: async () => {
             const request = getModel(
@@ -110,7 +110,7 @@ export function SidebarItemContextMenu({ child, show, close }: Props) {
           },
         },
         {
-          label: 'Duplicate',
+          label: '复制',
           hotKeyAction: 'http_request.duplicate',
           hotKeyLabelOnly: true, // Would trigger for every request (bad)
           leftSlot: <Icon icon="copy" />,
@@ -123,14 +123,14 @@ export function SidebarItemContextMenu({ child, show, close }: Props) {
           },
         },
         {
-          label: 'Move',
+          label: '移动',
           leftSlot: <Icon icon="arrow_right_circle" />,
           hidden: workspaces.length <= 1,
           onSelect: moveToWorkspace.mutate,
         },
         {
           color: 'danger',
-          label: 'Delete',
+          label: '删除',
           hotKeyAction: 'sidebar.delete_selected_item',
           hotKeyLabelOnly: true,
           leftSlot: <Icon icon="trash" />,

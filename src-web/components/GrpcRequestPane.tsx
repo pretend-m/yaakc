@@ -67,7 +67,7 @@ export function GrpcRequestPane({
   onSend,
 }: Props) {
   const authTab = useAuthTab(TAB_AUTH, activeRequest);
-  const metadataTab = useHeadersTab(TAB_METADATA, activeRequest, 'Metadata');
+  const metadataTab = useHeadersTab(TAB_METADATA, activeRequest, '元数据');
   const inheritedHeaders = useInheritedHeaders(activeRequest);
   const { value: activeTabs, set: setActiveTabs } = useKeyValue<Record<string, string>>({
     namespace: 'no_sync',
@@ -119,8 +119,8 @@ export function GrpcRequestPane({
     if (activeRequest.service == null || activeRequest.method == null) {
       alert({
         id: 'grpc-invalid-service-method',
-        title: 'Error',
-        body: 'Service or method not selected',
+        title: '异常',
+        body: '未选择服务或方法',
       });
     }
     onGo();
@@ -133,12 +133,12 @@ export function GrpcRequestPane({
 
   const tabs: TabItem[] = useMemo(
     () => [
-      { value: TAB_MESSAGE, label: 'Message' },
+      { value: TAB_MESSAGE, label: '消息' },
       ...metadataTab,
       ...authTab,
       {
         value: TAB_DESCRIPTION,
-        label: 'Info',
+        label: '信息',
         rightSlot: activeRequest.description && <CountBadge count={true} />,
       },
     ],
@@ -213,7 +213,7 @@ export function GrpcRequestPane({
                 paneWidth < 400 && 'flex-1',
               )}
             >
-              {select.options.find((o) => o.value === select.value)?.label ?? 'No Schema'}
+              {select.options.find((o) => o.value === select.value)?.label ?? '无结构'}
             </Button>
           </RadioDropdown>
           {methodType === 'client_streaming' || methodType === 'streaming' ? (

@@ -21,7 +21,7 @@ export function useExportData() {
 
       showDialog({
         id: 'export-data',
-        title: 'Export Data',
+        title: '导出数据',
         size: 'md',
         noPadding: true,
         render: ({ hide }) => (

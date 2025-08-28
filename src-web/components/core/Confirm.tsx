@@ -44,7 +44,7 @@ export function Confirm({
           onChange={setConfirm}
           label={
             <>
-              Type <strong>{requireTyping}</strong> to confirm
+              输入 <strong>{requireTyping}</strong> 确认
             </>
           }
         />

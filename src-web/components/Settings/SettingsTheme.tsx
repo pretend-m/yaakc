@@ -70,15 +70,15 @@ export function SettingsTheme() {
     <VStack space={3} className="mb-4">
       <Select
         name="appearance"
-        label="Appearance"
+        label="外观"
         labelPosition="top"
         size="sm"
         value={settings.appearance}
         onChange={(appearance) => patchModel(settings, { appearance })}
         options={[
-          { label: 'Automatic', value: 'system' },
-          { label: 'Light', value: 'light' },
-          { label: 'Dark', value: 'dark' },
+          { label: '自动', value: 'system' },
+          { label: '浅色', value: 'light' },
+          { label: '深色', value: 'dark' },
         ]}
       />
       <HStack space={2}>
@@ -117,7 +117,7 @@ export function SettingsTheme() {
         <HStack className="text" space={1.5}>
           <Icon icon={appearance === 'dark' ? 'moon' : 'sun'} />
           <strong>{activeTheme.data.active.label}</strong>
-          <em>(preview)</em>
+          <em>(预览)</em>
         </HStack>
         <HStack space={1.5} className="w-full">
           {buttonColors.map((c, i) => (

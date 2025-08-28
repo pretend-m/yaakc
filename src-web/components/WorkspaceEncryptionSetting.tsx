@@ -123,7 +123,7 @@ export function WorkspaceEncryptionSetting({ size, expanded, onDone, onEnabledEn
         </Banner>
       ) : (
         <Label htmlFor={null} help={<EncryptionHelp />}>
-          Workspace encryption
+          加密工作区
         </Label>
       )}
     </div>
@@ -151,8 +151,7 @@ function EnterWorkspaceKey({
         <Banner color="danger">{error}</Banner>
       ) : (
         <Banner color="info">
-          This workspace contains encrypted values but no key is configured. Please enter the
-          workspace key to access the encrypted data.
+          此工作区包含加密值,但尚未配置密钥,请输入工作区密钥以访问加密数据
         </Banner>
       )}
       <HStack
@@ -174,7 +173,7 @@ function EnterWorkspaceKey({
         <PlainInput
           required
           onChange={setKey}
-          label="Workspace encryption key"
+          label="工作区加密密钥"
           placeholder="YK0000-111111-222222-333333-444444-AAAAAA-BBBBBB-CCCCCC-DDDDDD"
         />
         <Button variant="border" type="submit" color="secondary">
@@ -206,7 +205,7 @@ function KeyRevealer({
       <VStack space={0.5}>
         {!disableLabel && (
           <span className="text-sm text-primary flex items-center gap-1">
-            workspace encryption key{' '}
+            工作区加密密钥{' '}
             <IconTooltip iconSize="sm" size="lg" content={helpAfterEncryption} />
           </span>
         )}
@@ -250,8 +249,7 @@ function HighlightedKey({ keyText, show }: { keyText: string; show: boolean }) {
 
 const helpAfterEncryption = (
   <p>
-    The following key is used for encryption operations within this workspace. It is stored securely
-    using your OS keychain, but it is recommended to back it up. If you share this workspace with
-    others, you&apos;ll need to send them this key to access any encrypted values.
+    以下密钥用于在此工作区内进行加密操作。它已通过您的操作系统密钥链安全存储，但建议您备份该密钥。
+    如果您与他人共享此工作区，您需要将此密钥发送给他们，以便他们能够访问任何加密的数值。
   </p>
 );

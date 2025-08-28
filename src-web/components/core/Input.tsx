@@ -440,7 +440,7 @@ function EncryptionInput({
   const dropdownItems = useMemo<DropdownItem[]>(
     () => [
       {
-        label: state.obscured ? 'Reveal' : 'Conceal',
+        label: state.obscured ? '显示' : '隐藏',
         disabled: isEncryptionEnabled && state.fieldType === 'text',
         leftSlot: <Icon icon={state.obscured ? 'eye' : 'eye_closed'} />,
         onSelect: () => setState((s) => ({ ...s, obscured: !s.obscured })),
@@ -453,7 +453,7 @@ function EncryptionInput({
       },
       { type: 'separator' },
       {
-        label: state.fieldType === 'text' ? 'Encrypt Field' : 'Decrypt Field',
+        label: state.fieldType === 'text' ? '加密字段' : '解密字段',
         leftSlot: <Icon icon={state.fieldType === 'text' ? 'lock' : 'lock_open'} />,
         onSelect: () => handleFieldTypeChange(state.fieldType === 'text' ? 'encrypted' : 'text'),
       },

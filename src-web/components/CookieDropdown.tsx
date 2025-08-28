@@ -22,7 +22,7 @@ export const CookieDropdown = memo(function CookieDropdown() {
     return [
       ...(cookieJars ?? []).map((j) => ({
         key: j.id,
-        label: j.name,
+        label: "默认",
         leftSlot: <Icon icon={j.id === activeCookieJar?.id ? 'check' : 'empty'} />,
         onSelect: () => {
           setWorkspaceSearchParams({ cookie_jar_id: j.id });
@@ -30,16 +30,16 @@ export const CookieDropdown = memo(function CookieDropdown() {
       })),
       ...(((cookieJars ?? []).length > 0 && activeCookieJar != null
         ? [
-            { type: 'separator', label: activeCookieJar.name },
+            { type: 'separator', label: "默认" },
             {
               key: 'manage',
-              label: 'Manage Cookies',
+              label: '管理Cookies',
               leftSlot: <Icon icon="cookie" />,
               onSelect: () => {
                 if (activeCookieJar == null) return;
                 showDialog({
                   id: 'cookies',
-                  title: 'Manage Cookies',
+                  title: '管理Cookies',
                   size: 'full',
                   render: () => <CookieDialog cookieJarId={activeCookieJar.id} />,
                 });
@@ -47,20 +47,20 @@ export const CookieDropdown = memo(function CookieDropdown() {
             },
             {
               key: 'rename',
-              label: 'Rename',
+              label: '重命名',
               leftSlot: <Icon icon="pencil" />,
               onSelect: async () => {
                 const name = await showPrompt({
                   id: 'rename-cookie-jar',
-                  title: 'Rename Cookie Jar',
+                  title: '重命名Cookie Jar',
                   description: (
                     <>
                       Enter a new name for <InlineCode>{activeCookieJar?.name}</InlineCode>
                     </>
                   ),
-                  label: 'Name',
+                  label: '名称',
                   confirmText: 'Save',
-                  placeholder: 'New name',
+                  placeholder: '新名称',
                   defaultValue: activeCookieJar?.name,
                 });
                 if (name == null) return;
@@ -70,7 +70,7 @@ export const CookieDropdown = memo(function CookieDropdown() {
             ...(((cookieJars ?? []).length > 1 // Never delete the last one
               ? [
                   {
-                    label: 'Delete',
+                    label: '删除',
                     leftSlot: <Icon icon="trash" />,
                     color: 'danger',
                     onSelect: async () => {
@@ -84,7 +84,7 @@ export const CookieDropdown = memo(function CookieDropdown() {
       { type: 'separator' },
       {
         key: 'create-cookie-jar',
-        label: 'New Cookie Jar',
+        label: '新建Cookie Jar',
         leftSlot: <Icon icon="plus" />,
         onSelect: () => createCookieJar.mutate(),
       },

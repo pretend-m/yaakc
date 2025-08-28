@@ -36,7 +36,7 @@ export function SelectFile({
 }: Props) {
   const handleClick = async () => {
     const filePath = await open({
-      title: directory ? 'Select Folder' : 'Select File',
+      title: directory ? '选择文件夹' : '选择文件',
       multiple: false,
       directory,
     });
@@ -49,8 +49,8 @@ export function SelectFile({
     onChange({ filePath: null, contentType: null });
   };
 
-  const itemLabel = noun ?? (directory ? 'Folder' : 'File');
-  const selectOrChange = (filePath ? 'Change ' : 'Select ') + itemLabel;
+  const itemLabel = noun ?? (directory ? '文件夹' : '文件');
+  const selectOrChange = (filePath ? '变更' : '选择') + itemLabel;
 
   return (
     <div>
@@ -96,7 +96,7 @@ export function SelectFile({
               )}
             >
               {rtlEscapeChar}
-              {filePath ?? `No ${itemLabel.toLowerCase()} selected`}
+              {filePath ?? `未选择${itemLabel.toLowerCase()}`}
             </div>
             {filePath == null && help && !label && <IconTooltip content={help} />}
           </>

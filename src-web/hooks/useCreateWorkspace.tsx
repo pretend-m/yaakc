@@ -6,7 +6,7 @@ export function useCreateWorkspace() {
   return useCallback(() => {
     showDialog({
       id: 'create-workspace',
-      title: 'Create Workspace',
+      title: '创建工作区',
       size: 'sm',
       render: ({ hide }) => <CreateWorkspaceDialog hide={hide} />,
     });

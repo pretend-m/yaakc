@@ -22,9 +22,9 @@ type GrantType = 'authorization_code' | 'implicit' | 'password' | 'client_creden
 
 const grantTypes: FormInputSelectOption[] = [
   { label: 'Authorization Code', value: 'authorization_code' },
-  { label: 'Implicit', value: 'implicit' },
-  { label: 'Resource Owner Password Credential', value: 'password' },
-  { label: 'Client Credentials', value: 'client_credentials' },
+  { label: '隐式', value: 'implicit' },
+  { label: '资源所有者密码凭证', value: 'password' },
+  { label: '客户端凭证', value: 'client_credentials' },
 ];
 
 const defaultGrantType = grantTypes[0]!.value;
@@ -78,11 +78,11 @@ const accessTokenUrls = [
 export const plugin: PluginDefinition = {
   authentication: {
     name: 'oauth2',
-    label: 'OAuth 2.0',
-    shortLabel: 'OAuth 2',
+    label: 'OAuth2.0',
+    shortLabel: 'OAuth2.0',
     actions: [
       {
-        label: 'Copy Current Token',
+        label: '复制当前Token',
         async onSelect(ctx, { contextId, values }) {
           const tokenArgs: TokenStoreArgs = {
             contextId,
@@ -92,11 +92,11 @@ export const plugin: PluginDefinition = {
           };
           const token = await getToken(ctx, tokenArgs);
           if (token == null) {
-            await ctx.toast.show({ message: 'No token to copy', color: 'warning' });
+            await ctx.toast.show({ message: '没有要复制的Token', color: 'warning' });
           } else {
             await ctx.clipboard.copyText(token.response.access_token);
             await ctx.toast.show({
-              message: 'Token copied to clipboard',
+              message: 'Token已复制到剪贴板',
               icon: 'copy',
               color: 'success',
             });
@@ -104,7 +104,7 @@ export const plugin: PluginDefinition = {
         },
       },
       {
-        label: 'Delete Token',
+        label: '删除Token',
         async onSelect(ctx, { contextId, values }) {
           const tokenArgs: TokenStoreArgs = {
             contextId,
@@ -113,25 +113,25 @@ export const plugin: PluginDefinition = {
             clientId: stringArg(values, 'clientId'),
           };
           if (await deleteToken(ctx, tokenArgs)) {
-            await ctx.toast.show({ message: 'Token deleted', color: 'success' });
+            await ctx.toast.show({ message: 'Token已删除', color: 'success' });
           } else {
-            await ctx.toast.show({ message: 'No token to delete', color: 'warning' });
+            await ctx.toast.show({ message: '没有要删除的Token', color: 'warning' });
           }
         },
       },
       {
-        label: 'Clear Window Session',
+        label: '清除会话窗口',
         async onSelect(ctx, { contextId }) {
           await resetDataDirKey(ctx, contextId);
         },
       },
       {
-        label: 'Toggle Debug Logs',
+        label: '切换调试日志',
         async onSelect(ctx) {
           const enableLogs = !(await ctx.store.get('enable_logs'));
           await ctx.store.set('enable_logs', enableLogs);
           await ctx.toast.show({
-            message: `Debug logs ${enableLogs ? 'enabled' : 'disabled'}`,
+            message: `调试日志 ${enableLogs ? 'enabled' : 'disabled'}`,
             color: 'info',
           });
         },
@@ -141,7 +141,7 @@ export const plugin: PluginDefinition = {
       {
         type: 'select',
         name: 'grantType',
-        label: 'Grant Type',
+        label: '授权类型',
         hideLabel: true,
         defaultValue: defaultGrantType,
         options: grantTypes,
@@ -151,13 +151,13 @@ export const plugin: PluginDefinition = {
       {
         type: 'text',
         name: 'clientId',
-        label: 'Client ID',
+        label: '客户端ID',
         optional: true,
       },
       {
         type: 'text',
         name: 'clientSecret',
-        label: 'Client Secret',
+        label: '客户端密钥',
         optional: true,
         password: true,
         dynamic: hiddenIfNot(['authorization_code', 'password', 'client_credentials']),
@@ -166,7 +166,7 @@ export const plugin: PluginDefinition = {
         type: 'text',
         name: 'authorizationUrl',
         optional: true,
-        label: 'Authorization URL',
+        label: '授权URL',
         dynamic: hiddenIfNot(['authorization_code', 'implicit']),
         placeholder: authorizationUrls[0],
         completionOptions: authorizationUrls.map((url) => ({ label: url, value: url })),
@@ -175,7 +175,7 @@ export const plugin: PluginDefinition = {
         type: 'text',
         name: 'accessTokenUrl',
         optional: true,
-        label: 'Access Token URL',
+        label: '访问TokenURL',
         placeholder: accessTokenUrls[0],
         dynamic: hiddenIfNot(['authorization_code', 'password', 'client_credentials']),
         completionOptions: accessTokenUrls.map((url) => ({ label: url, value: url })),
@@ -183,30 +183,29 @@ export const plugin: PluginDefinition = {
       {
         type: 'text',
         name: 'redirectUri',
-        label: 'Redirect URI',
+        label: '重定向URI',
         optional: true,
         dynamic: hiddenIfNot(['authorization_code', 'implicit']),
       },
       {
         type: 'text',
         name: 'state',
-        label: 'State',
+        label: '状态',
         optional: true,
         dynamic: hiddenIfNot(['authorization_code', 'implicit']),
       },
       {
         type: 'text',
         name: 'audience',
-        label: 'Audience',
+        label: '受众',
         optional: true,
       },
       {
         type: 'select',
         name: 'tokenName',
-        label: 'Token for authorization',
+        label: '用于授权的Token',
         description:
-          'Select which token to send in the "Authorization: Bearer" header. Most APIs expect ' +
-          'access_token, but some (like OpenID Connect) require id_token.',
+          '选择要在 "Authorization: Bearer" 头中发送的令牌。大多数 API 期望 access_token，但有些（如 OpenID Connect）需要 id_token',
         defaultValue: 'access_token',
         options: [
           { label: 'access_token', value: 'access_token' },
@@ -217,16 +216,16 @@ export const plugin: PluginDefinition = {
       {
         type: 'checkbox',
         name: 'usePkce',
-        label: 'Use PKCE',
+        label: '使用PKCE',
         dynamic: hiddenIfNot(['authorization_code']),
       },
       {
         type: 'select',
         name: 'pkceChallengeMethod',
-        label: 'Code Challenge Method',
+        label: 'Code Challenge方法',
         options: [
           { label: 'SHA-256', value: PKCE_SHA256 },
-          { label: 'Plain', value: PKCE_PLAIN },
+          { label: '明文', value: PKCE_PLAIN },
         ],
         defaultValue: DEFAULT_PKCE_METHOD,
         dynamic: hiddenIfNot(['authorization_code'], ({ usePkce }) => !!usePkce),
@@ -235,21 +234,21 @@ export const plugin: PluginDefinition = {
         type: 'text',
         name: 'pkceCodeChallenge',
         label: 'Code Verifier',
-        placeholder: 'Automatically generated when not set',
+        placeholder: '未设置时自动生成',
         optional: true,
         dynamic: hiddenIfNot(['authorization_code'], ({ usePkce }) => !!usePkce),
       },
       {
         type: 'text',
         name: 'username',
-        label: 'Username',
+        label: '用户名',
         optional: true,
         dynamic: hiddenIfNot(['password']),
       },
       {
         type: 'text',
         name: 'password',
-        label: 'Password',
+        label: '密码',
         password: true,
         optional: true,
         dynamic: hiddenIfNot(['password']),
@@ -257,7 +256,7 @@ export const plugin: PluginDefinition = {
       {
         type: 'select',
         name: 'responseType',
-        label: 'Response Type',
+        label: '响应类型',
         defaultValue: 'token',
         options: [
           { label: 'Access Token', value: 'token' },
@@ -268,31 +267,31 @@ export const plugin: PluginDefinition = {
       },
       {
         type: 'accordion',
-        label: 'Advanced',
+        label: '高级',
         inputs: [
-          { type: 'text', name: 'scope', label: 'Scope', optional: true },
+          { type: 'text', name: 'scope', label: '作用域', optional: true },
           {
             type: 'text',
             name: 'headerPrefix',
-            label: 'Header Prefix',
+            label: '头部前缀',
             optional: true,
             defaultValue: 'Bearer',
           },
           {
             type: 'select',
             name: 'credentials',
-            label: 'Send Credentials',
+            label: '发送凭证方式',
             defaultValue: 'body',
             options: [
-              { label: 'In Request Body', value: 'body' },
-              { label: 'As Basic Authentication', value: 'basic' },
+              { label: '在请求体中', value: 'body' },
+              { label: '作为基本认证', value: 'basic' },
             ],
           },
         ],
       },
       {
         type: 'accordion',
-        label: 'Access Token Response',
+        label: '访问Token响应',
         async dynamic(ctx, { contextId, values }) {
           const tokenArgs: TokenStoreArgs = {
             contextId,
@@ -305,7 +304,7 @@ export const plugin: PluginDefinition = {
             return { hidden: true };
           }
           return {
-            label: 'Access Token Response',
+            label: '访问Token响应',
             inputs: [
               {
                 type: 'editor',

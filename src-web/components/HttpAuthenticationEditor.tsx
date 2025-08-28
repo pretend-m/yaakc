@@ -41,13 +41,13 @@ export function HttpAuthenticationEditor({ model }: Props) {
   );
 
   if (model.authenticationType === 'none') {
-    return <EmptyStateText>No authentication</EmptyStateText>;
+    return <EmptyStateText>无身份验证</EmptyStateText>;
   }
 
   if (model.authenticationType != null && authConfig.data == null) {
     return (
       <EmptyStateText>
-        Unknown authentication <InlineCode>{authConfig.data}</InlineCode>
+        未知身份验证 <InlineCode>{authConfig.data}</InlineCode>
       </EmptyStateText>
     );
   }
@@ -57,20 +57,20 @@ export function HttpAuthenticationEditor({ model }: Props) {
       return (
         <EmptyStateText className="flex-col gap-1">
           <p>
-            Apply auth to all requests in <strong>{resolvedModelName(model)}</strong>
+            在所有请求中应用认证 <strong>{resolvedModelName(model)}</strong>
           </p>
           <Link href="https://feedback.yaak.app/help/articles/2112119-request-inheritance">
-            Documentation
+            文档
           </Link>
         </EmptyStateText>
       );
     } else {
-      return <EmptyStateText>Authentication not configured</EmptyStateText>;
+      return <EmptyStateText>未配置身份验证</EmptyStateText>;
     }
   }
 
   if (inheritedAuth.authenticationType === 'none') {
-    return <EmptyStateText>No authentication</EmptyStateText>;
+    return <EmptyStateText>无身份验证</EmptyStateText>;
   }
 
   const wasAuthInherited = inheritedAuth?.id !== model.id;
@@ -102,7 +102,7 @@ export function HttpAuthenticationEditor({ model }: Props) {
           className="w-full"
           checked={!model.authentication.disabled}
           onChange={(disabled) => handleChange({ ...model.authentication, disabled: !disabled })}
-          title="Enabled"
+          title="启用"
         />
         {authConfig.data?.actions && authConfig.data.actions.length > 0 && (
           <Dropdown
@@ -114,7 +114,7 @@ export function HttpAuthenticationEditor({ model }: Props) {
               }),
             )}
           >
-            <IconButton title="Authentication Actions" icon="settings" size="xs" />
+            <IconButton title="身份验证操作" icon="settings" size="xs" />
           </Dropdown>
         )}
       </HStack>

@@ -29,21 +29,21 @@ export function SettingsGeneral() {
       <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-1">
         <Select
           name="updateChannel"
-          label="Update Channel"
+          label="更新渠道"
           labelPosition="left"
           labelClassName="w-[14rem]"
           size="sm"
           value={settings.updateChannel}
           onChange={(updateChannel) => patchModel(settings, { updateChannel })}
           options={[
-            { label: 'Stable', value: 'stable' },
-            { label: 'Beta (more frequent)', value: 'beta' },
+            { label: '稳定版', value: 'stable' },
+            { label: 'Beta (更新更频繁)', value: 'beta' },
           ]}
         />
         <IconButton
           variant="border"
           size="sm"
-          title="Check for updates"
+          title="检查更新"
           icon="refresh"
           spin={checkForUpdates.isPending}
           onClick={() => checkForUpdates.mutateAsync()}
@@ -53,20 +53,20 @@ export function SettingsGeneral() {
       <Select
         name="autoupdate"
         value={settings.autoupdate ? 'auto' : 'manual'}
-        label="Update Behavior"
+        label="更新行为"
         labelPosition="left"
         size="sm"
         labelClassName="w-[14rem]"
         onChange={(v) => patchModel(settings, { autoupdate: v === 'auto' })}
         options={[
-          { label: 'Automatic', value: 'auto' },
-          { label: 'Manual', value: 'manual' },
+          { label: '自动', value: 'auto' },
+          { label: '手动', value: 'manual' },
         ]}
       />
 
       <Select
         name="switchWorkspaceBehavior"
-        label="Workspace Window Behavior"
+        label="工作区窗口行为"
         labelPosition="left"
         labelClassName="w-[14rem]"
         size="sm"
@@ -83,16 +83,16 @@ export function SettingsGeneral() {
           else await patchModel(settings, { openWorkspaceNewWindow: null });
         }}
         options={[
-          { label: 'Always ask', value: 'ask' },
-          { label: 'Open in current window', value: 'current' },
-          { label: 'Open in new window', value: 'new' },
+          { label: '总是询问', value: 'ask' },
+          { label: '在当前窗口中打开', value: 'current' },
+          { label: '在新窗口中打开', value: 'new' },
         ]}
       />
 
       <Separator className="my-4" />
 
       <Heading level={2}>
-        Workspace{' '}
+        工作区{' '}
         <div className="inline-block ml-1 bg-surface-highlight px-2 py-0.5 rounded text text-shrink">
           {workspace.name}
         </div>
@@ -102,7 +102,7 @@ export function SettingsGeneral() {
           required
           size="sm"
           name="requestTimeout"
-          label="Request Timeout (ms)"
+          label="请求超时 (ms)"
           labelClassName="w-[14rem]"
           placeholder="0"
           labelPosition="left"
@@ -114,8 +114,8 @@ export function SettingsGeneral() {
 
         <Checkbox
           checked={workspace.settingValidateCertificates}
-          help="When disabled, skip validatation of server certificates, useful when interacting with self-signed certs."
-          title="Validate TLS Certificates"
+          help="禁用后将跳过服务器证书验证,适用于自签名证书场景"
+          title="验证TLS证书"
           onChange={(settingValidateCertificates) =>
             patchModel(workspace, { settingValidateCertificates })
           }
@@ -123,7 +123,7 @@ export function SettingsGeneral() {
 
         <Checkbox
           checked={workspace.settingFollowRedirects}
-          title="Follow Redirects"
+          title="跟随服务器重定向"
           onChange={(settingFollowRedirects) =>
             patchModel(workspace, {
               settingFollowRedirects,
@@ -134,11 +134,11 @@ export function SettingsGeneral() {
 
       <Separator className="my-4" />
 
-      <Heading level={2}>App Info</Heading>
+      <Heading level={2}>App 信息</Heading>
       <KeyValueRows>
-        <KeyValueRow label="Version">{appInfo.version}</KeyValueRow>
+        <KeyValueRow label="版本">{appInfo.version}</KeyValueRow>
         <KeyValueRow
-          label="Data Directory"
+          label="数据目录"
           rightSlot={
             <IconButton
               title={revealInFinderText}
@@ -151,7 +151,7 @@ export function SettingsGeneral() {
           {appInfo.appDataDir}
         </KeyValueRow>
         <KeyValueRow
-          label="Logs Directory"
+          label="日志目录"
           rightSlot={
             <IconButton
               title={revealInFinderText}

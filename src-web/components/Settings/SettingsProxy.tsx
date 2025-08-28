@@ -15,7 +15,7 @@ export function SettingsProxy() {
     <VStack space={1.5} className="mb-4">
       <Select
         name="proxy"
-        label="Proxy"
+        label="代理"
         hideLabel
         size="sm"
         value={settings.proxy?.type ?? 'automatic'}
@@ -38,9 +38,9 @@ export function SettingsProxy() {
           }
         }}
         options={[
-          { label: 'Automatic Proxy Detection', value: 'automatic' },
-          { label: 'Custom Proxy Configuration', value: 'enabled' },
-          { label: 'No Proxy', value: 'disabled' },
+          { label: '自动检测', value: 'automatic' },
+          { label: '自定义配置', value: 'enabled' },
+          { label: '无', value: 'disabled' },
         ]}
       />
       {settings.proxy?.type === 'enabled' && (
@@ -48,8 +48,8 @@ export function SettingsProxy() {
           <Checkbox
             className="my-3"
             checked={!settings.proxy.disabled}
-            title="Enable proxy"
-            help="Use this to temporarily disable the proxy without losing the configuration"
+            title="启用代理"
+            help="使用此选项可临时禁用代理,而不会丢失配置"
             onChange={async (enabled) => {
               const { proxy } = settings;
               const http = proxy?.type === 'enabled' ? proxy.http : '';
@@ -67,7 +67,7 @@ export function SettingsProxy() {
               size="sm"
               label={
                 <>
-                  Proxy for <InlineCode>http://</InlineCode> traffic
+                  <InlineCode>http://</InlineCode>
                 </>
               }
               placeholder="localhost:9090"
@@ -94,7 +94,7 @@ export function SettingsProxy() {
               size="sm"
               label={
                 <>
-                  Proxy for <InlineCode>https://</InlineCode> traffic
+                  <InlineCode>https://</InlineCode>
                 </>
               }
               placeholder="localhost:9090"
@@ -114,7 +114,7 @@ export function SettingsProxy() {
           <Separator className="my-6" />
           <Checkbox
             checked={settings.proxy.auth != null}
-            title="Enable authentication"
+            title="启用身份验证"
             onChange={async (enabled) => {
               const { proxy } = settings;
               const http = proxy?.type === 'enabled' ? proxy.http : '';
@@ -133,8 +133,8 @@ export function SettingsProxy() {
               <PlainInput
                 required
                 size="sm"
-                label="User"
-                placeholder="myUser"
+                label="用户名"
+                placeholder="我的用户名"
                 defaultValue={settings.proxy.auth.user}
                 onChange={async (user) => {
                   const { proxy } = settings;
@@ -151,7 +151,7 @@ export function SettingsProxy() {
               />
               <PlainInput
                 size="sm"
-                label="Password"
+                label="密码"
                 type="password"
                 placeholder="s3cretPassw0rd"
                 defaultValue={settings.proxy.auth.password}
@@ -174,8 +174,8 @@ export function SettingsProxy() {
             <>
               <Separator className="my-6" />
               <PlainInput
-                label="Proxy Bypass"
-                help="Comma-separated list to bypass the proxy."
+                label="绕过代理"
+                help="逗号分隔的主机列表"
                 defaultValue={settings.proxy.bypass}
                 placeholder="127.0.0.1, *.example.com, localhost:3000"
                 onChange={async (bypass) => {

@@ -18,7 +18,7 @@ const fontSizeOptions = [
 ].map((n) => ({ label: `${n}`, value: `${n}` }));
 
 const keymaps: { value: EditorKeymap; label: string }[] = [
-  { value: 'default', label: 'Default' },
+  { value: 'default', label: '默认' },
   { value: 'vim', label: 'Vim' },
   { value: 'vscode', label: 'VSCode' },
   { value: 'emacs', label: 'Emacs' },
@@ -40,10 +40,10 @@ export function SettingsInterface() {
           <Select
             size="sm"
             name="uiFont"
-            label="Interface Font"
+            label="界面字体"
             value={settings.interfaceFont ?? NULL_FONT_VALUE}
             options={[
-              { label: 'System Default', value: NULL_FONT_VALUE },
+              { label: '系统默认', value: NULL_FONT_VALUE },
               ...(fonts.data.uiFonts.map((f) => ({
                 label: f,
                 value: f,
@@ -64,7 +64,7 @@ export function SettingsInterface() {
           hideLabel
           size="sm"
           name="interfaceFontSize"
-          label="Interface Font Size"
+          label="界面字体大小"
           defaultValue="15"
           value={`${settings.interfaceFontSize}`}
           options={fontSizeOptions}
@@ -76,10 +76,10 @@ export function SettingsInterface() {
           <Select
             size="sm"
             name="editorFont"
-            label="Editor Font"
+            label="编辑器字体"
             value={settings.editorFont ?? NULL_FONT_VALUE}
             options={[
-              { label: 'System Default', value: NULL_FONT_VALUE },
+              { label: '系统默认', value: NULL_FONT_VALUE },
               ...(fonts.data.editorFonts.map((f) => ({
                 label: f,
                 value: f,
@@ -95,7 +95,7 @@ export function SettingsInterface() {
           hideLabel
           size="sm"
           name="editorFontSize"
-          label="Editor Font Size"
+          label="编辑器字体大小"
           defaultValue="13"
           value={`${settings.editorFontSize}`}
           options={fontSizeOptions}
@@ -108,27 +108,27 @@ export function SettingsInterface() {
         leftSlot={<Icon icon="keyboard" color="secondary" />}
         size="sm"
         name="editorKeymap"
-        label="Editor Keymap"
+        label="键盘映射"
         value={`${settings.editorKeymap}`}
         options={keymaps}
         onChange={(v) => patchModel(settings, { editorKeymap: v })}
       />
       <Checkbox
         checked={settings.editorSoftWrap}
-        title="Wrap Editor Lines"
+        title="自动换行"
         onChange={(editorSoftWrap) => patchModel(settings, { editorSoftWrap })}
       />
       <Checkbox
         checked={settings.coloredMethods}
-        title="Colorize Request Methods"
+        title="请求方法高亮显示"
         onChange={(coloredMethods) => patchModel(settings, { coloredMethods })}
       />
 
       {type() !== 'macos' && (
         <Checkbox
           checked={settings.hideWindowControls}
-          title="Hide Window Controls"
-          help="Hide the close/maximize/minimize controls on Windows or Linux"
+          title="隐藏窗口控件"
+          help="隐藏Windows或Linux上的关闭/最大化/最小化控件"
           onChange={(hideWindowControls) => patchModel(settings, { hideWindowControls })}
         />
       )}

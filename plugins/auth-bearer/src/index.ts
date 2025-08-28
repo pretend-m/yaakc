@@ -5,7 +5,7 @@ export const plugin: PluginDefinition = {
   authentication: {
     name: 'bearer',
     label: 'Bearer Token',
-    shortLabel: 'Bearer',
+    shortLabel: 'Bearer Token',
     args: [
       {
         type: 'text',
@@ -17,12 +17,12 @@ export const plugin: PluginDefinition = {
       {
         type: 'text',
         name: 'prefix',
-        label: 'Prefix',
+        label: '前缀',
         optional: true,
         placeholder: '',
         defaultValue: 'Bearer',
         description:
-          'The prefix to use for the Authorization header, which will be of the format "<PREFIX> <TOKEN>".',
+          '用于Authorization头部的前缀,格式为 "<PREFIX> <TOKEN>".',
       },
     ],
     async onApply(_ctx, { values }) {

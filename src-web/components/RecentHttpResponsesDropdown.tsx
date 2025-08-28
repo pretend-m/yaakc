@@ -31,34 +31,34 @@ export const RecentHttpResponsesDropdown = function ResponsePane({
     <Dropdown
       items={[
         {
-          label: 'Save to File',
+          label: '保存到文件',
           onSelect: saveResponse.mutate,
           leftSlot: <Icon icon="save" />,
           hidden: responses.length === 0 || !!activeResponse.error,
           disabled: activeResponse.state !== 'closed' && activeResponse.status >= 100,
         },
         {
-          label: 'Copy Body',
+          label: '复制',
           onSelect: copyResponse.mutate,
           leftSlot: <Icon icon="copy" />,
           hidden: responses.length === 0 || !!activeResponse.error,
           disabled: activeResponse.state !== 'closed' && activeResponse.status >= 100,
         },
         {
-          label: 'Delete',
+          label: '删除',
           leftSlot: <Icon icon="trash" />,
           onSelect: () => deleteModel(activeResponse),
         },
         {
-          label: 'Unpin Response',
+          label: '取消固定响应',
           onSelect: () => onPinnedResponseId(activeResponse.id),
           leftSlot: <Icon icon="unpin" />,
           hidden: latestResponseId === activeResponse.id,
           disabled: responses.length === 0,
         },
-        { type: 'separator', label: 'History' },
+        { type: 'separator', label: '历史' },
         {
-          label: `Delete ${responses.length} ${pluralize('Response', responses.length)}`,
+          label: `删除 ${responses.length} ${pluralize('个响应', responses.length)}`,
           onSelect: deleteAllResponses.mutate,
           hidden: responses.length === 0,
           disabled: responses.length === 0,
@@ -78,7 +78,7 @@ export const RecentHttpResponsesDropdown = function ResponsePane({
       ]}
     >
       <IconButton
-        title="Show response history"
+        title="显示响应历史记录"
         icon={activeResponse?.id === latestResponseId ? 'chevron_down' : 'pin'}
         className="m-0.5 text-text-subtle"
         size="sm"

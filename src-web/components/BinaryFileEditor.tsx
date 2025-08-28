@@ -42,12 +42,12 @@ export function BinaryFileEditor({
       {filePath != null && mimeType !== contentType && !ignoreContentType.value && (
         <Banner className="mt-3 !py-5">
           <div className="mb-4 text-center">
-            <div>Set Content-Type header</div>
-            <InlineCode>{mimeType}</InlineCode> for current request?
+            <div>是否设置请求头?</div>
+            <InlineCode>{mimeType}</InlineCode>
           </div>
           <HStack space={1.5} justifyContent="center">
             <Button size="sm" variant="border" onClick={() => ignoreContentType.set(true)}>
-              Ignore
+              忽略
             </Button>
             <Button
               variant="solid"
@@ -55,7 +55,7 @@ export function BinaryFileEditor({
               size="sm"
               onClick={() => onChangeContentType(mimeType)}
             >
-              Set Header
+              设置
             </Button>
           </HStack>
         </Banner>

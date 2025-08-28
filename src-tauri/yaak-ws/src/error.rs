@@ -4,7 +4,7 @@ use tokio_tungstenite::tungstenite;
 
 #[derive(Error, Debug)]
 pub enum Error {
-    #[error("WebSocket error: {0}")]
+    #[error("WebSocket 异常: {0}")]
     WebSocketErr(#[from] tungstenite::Error),
 
     #[error(transparent)]
@@ -16,7 +16,7 @@ pub enum Error {
     #[error(transparent)]
     TemplateError(#[from] yaak_templates::error::Error),
 
-    #[error("WebSocket error: {0}")]
+    #[error("WebSocket 异常: {0}")]
     GenericError(String),
 }
 

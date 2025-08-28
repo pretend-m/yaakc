@@ -83,7 +83,7 @@ export function WebsocketResponsePane({ activeRequest }: Props) {
                 )}
                 <WebsocketStatusTag connection={activeConnection} />
                 <span>&bull;</span>
-                <span>{events.length} Messages</span>
+                <span>{events.length} 消息</span>
               </HStack>
               <HStack space={0.5} className="ml-auto">
                 <RecentWebsocketConnectionsDropdown
@@ -145,10 +145,10 @@ export function WebsocketResponsePane({ activeRequest }: Props) {
                             setHexDumps({ ...hexDumps, [activeEventId]: !hexDump });
                           }}
                         >
-                          {hexDump ? 'Show Message' : 'Show Hexdump'}
+                          {hexDump ? '显示消息' : 'Show Hexdump'}
                         </Button>
                         <IconButton
-                          title="Copy message"
+                          title="复制消息"
                           icon="copy"
                           size="xs"
                           onClick={() => copyToClipboard(formattedMessage ?? '')}

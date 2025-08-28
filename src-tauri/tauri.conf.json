@@ -1,5 +1,5 @@
 {
-  "productName": "Yaak",
+  "productName": "Yaaks",
   "version": "0.0.0",
   "identifier": "app.yaak.desktop",
   "build": {
@@ -74,10 +74,12 @@
       "minimumSystemVersion": "13.0",
       "exceptionDomain": "",
       "entitlements": "macos/entitlements.plist",
-      "frameworks": []
+      "frameworks": [],
+      "signingIdentity": null
     },
     "windows": {
-      "signCommand": "trusted-signing-cli -e https://eus.codesigning.azure.net/ -a Yaak -c yaakapp %1"
+      "signCommand": "trusted-signing-cli -e https://eus.codesigning.azure.net/ -a Yaak -c yaakapp %1",
+      "certificateThumbprint": null
     }
   }
 }

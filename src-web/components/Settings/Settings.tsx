@@ -10,7 +10,7 @@ import { TabContent, Tabs } from '../core/Tabs/Tabs';
 import { HeaderSize } from '../HeaderSize';
 import { SettingsInterface } from './SettingsInterface';
 import { SettingsGeneral } from './SettingsGeneral';
-import { SettingsLicense } from './SettingsLicense';
+// import { SettingsLicense } from './SettingsLicense';
 import { SettingsPlugins } from './SettingsPlugins';
 import { SettingsProxy } from './SettingsProxy';
 import { SettingsTheme } from './SettingsTheme';
@@ -19,13 +19,13 @@ interface Props {
   hide?: () => void;
 }
 
-const TAB_GENERAL = 'general';
-const TAB_INTERFACE = 'interface';
-const TAB_THEME = 'theme';
-const TAB_PROXY = 'proxy';
-const TAB_PLUGINS = 'plugins';
-const TAB_LICENSE = 'license';
-const tabs = [TAB_GENERAL, TAB_THEME, TAB_INTERFACE, TAB_PROXY, TAB_PLUGINS, TAB_LICENSE] as const;
+const TAB_GENERAL = '通用';
+const TAB_INTERFACE = '界面';
+const TAB_THEME = '主题';
+const TAB_PROXY = '代理';
+// const TAB_PLUGINS = '插件';
+// const TAB_LICENSE = '许可证';
+const tabs = [TAB_GENERAL, TAB_THEME, TAB_INTERFACE, TAB_PROXY] as const;
 export type SettingsTab = (typeof tabs)[number];
 
 export default function Settings({ hide }: Props) {
@@ -83,15 +83,15 @@ export default function Settings({ hide }: Props) {
         <TabContent value={TAB_THEME} className="overflow-y-auto h-full px-4">
           <SettingsTheme />
         </TabContent>
-        <TabContent value={TAB_PLUGINS} className="h-full px-4 grid grid-rows-1">
-          <SettingsPlugins />
-        </TabContent>
+        {/*<TabContent value={TAB_PLUGINS} className="h-full px-4 grid grid-rows-1">*/}
+        {/*  <SettingsPlugins />*/}
+        {/*</TabContent>*/}
         <TabContent value={TAB_PROXY} className="overflow-y-auto h-full px-4">
           <SettingsProxy />
         </TabContent>
-        <TabContent value={TAB_LICENSE} className="overflow-y-auto h-full px-4">
-          <SettingsLicense />
-        </TabContent>
+        {/*<TabContent value={TAB_LICENSE} className="overflow-y-auto h-full px-4">*/}
+        {/*  <SettingsLicense />*/}
+        {/*</TabContent>*/}
       </Tabs>
     </div>
   );

@@ -35,8 +35,8 @@ export function FormUrlencodedEditor({ request, forceUpdateKey, onChange }: Prop
       valueAutocompleteVariables
       nameAutocompleteFunctions
       nameAutocompleteVariables
-      namePlaceholder="entry_name"
-      valuePlaceholder="Value"
+      namePlaceholder="名称"
+      valuePlaceholder="值"
       pairs={pairs}
       onChange={handleChange}
       forceUpdateKey={forceUpdateKey}
