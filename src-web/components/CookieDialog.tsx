@@ -21,7 +21,7 @@ export const CookieDialog = function ({ cookieJarId }: Props) {
   if (cookieJar.cookies.length === 0) {
     return (
       <Banner>
-        Cookies will appear when a response contains the <InlineCode>Set-Cookie</InlineCode> header
+        当服务器响应中有<InlineCode>Set-Cookie</InlineCode>头部时,将会显示Cookies
       </Banner>
     );
   }

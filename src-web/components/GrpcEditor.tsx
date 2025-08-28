@@ -140,7 +140,7 @@ export function GrpcEditor({
           isLoading={reflectionLoading}
           onClick={() => {
             showDialog({
-              title: 'Configure Schema',
+              title: '配置结构',
               size: 'md',
               id: 'reflection-failed',
               render: ({ hide }) => <GrpcProtoSelectionDialog onDone={hide} />,
@@ -148,16 +148,16 @@ export function GrpcEditor({
           }}
         >
           {reflectionLoading
-            ? 'Inspecting Schema'
+            ? '检查结构'
             : reflectionUnavailable
-              ? 'Select Proto Files'
+              ? '选择原始文件'
               : reflectionError
-                ? 'Server Error'
+                ? '服务异常'
                 : protoFiles.length > 0
-                  ? pluralizeCount('File', protoFiles.length)
+                  ? pluralizeCount('文件', protoFiles.length)
                   : services != null && protoFiles.length === 0
-                    ? 'Schema Detected'
-                    : 'Select Schema'}
+                    ? '检测到结构'
+                    : '选择结构'}
         </Button>
       </div>,
     ],

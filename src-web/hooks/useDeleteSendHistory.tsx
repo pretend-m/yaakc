@@ -40,7 +40,9 @@ export function useDeleteSendHistory() {
       const confirmed = await showConfirmDelete({
         id: 'delete-send-history',
         title: '清除发送历史记录',
-        description: <>删除 {labels.join(' 和 ')}?</>,
+        description: <>确认删除 {labels.join(' 和 ')}?</>,
+        confirmText: '删除',
+        cancelText: '取消',
       });
       if (!confirmed) return false;
 

@@ -5,7 +5,7 @@ const NEWLINE = '\\\n ';
 export const plugin: PluginDefinition = {
   httpRequestActions: [
     {
-      label: 'Copy as Curl',
+      label: '复制为curl',
       icon: 'copy',
       async onSelect(ctx, args) {
         const rendered_request = await ctx.httpRequest.render({
@@ -15,7 +15,7 @@ export const plugin: PluginDefinition = {
         const data = await convertToCurl(rendered_request);
         await ctx.clipboard.copyText(data);
         await ctx.toast.show({
-          message: 'Command copied to clipboard',
+          message: '命令已复制到剪贴板',
           icon: 'copy',
           color: 'success',
         });

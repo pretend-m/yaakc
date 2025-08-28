@@ -60,7 +60,7 @@ function GrpcProtoSelectionDialogWithRequest({ request }: Props & { request: Grp
             await grpc.reflect.refetch();
           }}
         >
-          Add Files
+          添加文件
         </Button>
         <Button
           variant="border"
@@ -76,7 +76,7 @@ function GrpcProtoSelectionDialogWithRequest({ request }: Props & { request: Grp
             await grpc.reflect.refetch();
           }}
         >
-          Add Directories
+          添加目录
         </Button>
         <Button
           isLoading={grpc.reflect.isFetching}
@@ -85,14 +85,14 @@ function GrpcProtoSelectionDialogWithRequest({ request }: Props & { request: Grp
           color="secondary"
           onClick={() => grpc.reflect.refetch()}
         >
-          Refresh Schema
+          刷新结构
         </Button>
       </HStack>
       <VStack space={5}>
         {reflectError && (
           <Banner color="warning">
             <h1 className="font-bold">
-              Reflection failed on URL <InlineCode>{request.url || 'n/a'}</InlineCode>
+              URL反射失败 <InlineCode>{request.url || 'n/a'}</InlineCode>
             </h1>
             <p>{reflectError.trim()}</p>
           </Banner>
@@ -116,7 +116,7 @@ function GrpcProtoSelectionDialogWithRequest({ request }: Props & { request: Grp
         {serverReflection && services != null && services.length > 0 && (
           <Banner className="flex flex-col gap-2">
             <p>
-              Server reflection found services
+              找到服务
               {services?.map((s, i) => {
                 return (
                   <span key={i}>
@@ -125,8 +125,8 @@ function GrpcProtoSelectionDialogWithRequest({ request }: Props & { request: Grp
                   </span>
                 );
               })}
-              . You can override this schema by manually selecting <InlineCode>*.proto</InlineCode>{' '}
-              files.
+              . 您可以通过手动选择来覆盖此结构 <InlineCode>*.proto</InlineCode>{' '}
+              文件.
             </p>
           </Banner>
         )}
@@ -135,7 +135,7 @@ function GrpcProtoSelectionDialogWithRequest({ request }: Props & { request: Grp
           <table className="w-full divide-y divide-surface-highlight">
             <thead>
               <tr>
-                <th className="text-text-subtlest" colSpan={3}>Added File Paths</th>
+                <th className="text-text-subtlest" colSpan={3}>添加文件路径</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-surface-highlight">
@@ -152,7 +152,7 @@ function GrpcProtoSelectionDialogWithRequest({ request }: Props & { request: Grp
                     </td>
                     <td className="w-0 py-0.5">
                       <IconButton
-                        title="Remove file"
+                        title="删除文件"
                         variant="border"
                         size="xs"
                         icon="trash"

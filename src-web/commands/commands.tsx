@@ -28,11 +28,12 @@ export const createFolder = createFastMutation<
       const name = await showPrompt({
         id: 'new-folder',
         label: '名称',
-        defaultValue: '文件夹',
+        defaultValue: '文件夹名称',
         title: '新文件夹',
         required: true,
         confirmText: '创建',
         placeholder: '名称',
+        cancelText: '取消',
       });
       if (name == null) throw new Error('未提供创建文件夹的名称');
 
@@ -77,6 +78,7 @@ export const syncWorkspace = createFastMutation<
           id: 'commit-sync',
           title: '检测到更改',
           confirmText: '应用更改',
+
           color: isDeletingWorkspace ? 'danger' : 'primary',
           description: (
             <VStack space={3}>

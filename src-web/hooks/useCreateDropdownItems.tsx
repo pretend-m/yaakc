@@ -62,7 +62,7 @@ export function useCreateDropdownItems({
         : [
             { type: 'separator' },
             {
-              label: 'Folder',
+              label: '文件夹',
               leftSlot: hideIcons ? undefined : <Icon icon="plus" />,
               onSelect: () => createFolder.mutate({ folderId }),
             },

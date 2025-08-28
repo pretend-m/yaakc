@@ -45,7 +45,7 @@ export function SyncToFilesystemSetting({
         directory
         label="同步本地目录"
         size="xs"
-        noun="Directory"
+        noun="目录"
         help="将数据同步到文件夹以进行备份和Git集成"
         filePath={value.filePath}
         onChange={async ({ filePath }) => {

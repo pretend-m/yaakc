@@ -107,7 +107,7 @@ export function GraphQLEditor({ request, onChange, baseRequest, ...extraEditorPr
                                     color="primary"
                                     size="sm"
                                   >
-                                    Retry Request
+                                    重新请求
                                   </Button>
                                 </div>
                               </>

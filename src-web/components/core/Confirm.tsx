@@ -9,6 +9,7 @@ export interface ConfirmProps {
   onHide: () => void;
   onResult: (result: boolean) => void;
   confirmText?: string;
+  cancelText?: string;
   requireTyping?: string;
   color?: Color;
 }
@@ -17,6 +18,7 @@ export function Confirm({
   onHide,
   onResult,
   confirmText,
+  cancelText,
   requireTyping,
   color = 'primary',
 }: ConfirmProps) {
@@ -54,7 +56,7 @@ export function Confirm({
           {confirmText ?? 'Confirm'}
         </Button>
         <Button onClick={handleHide} variant="border">
-          Cancel
+          {cancelText ?? 'Cancel'}
         </Button>
       </HStack>
     </form>

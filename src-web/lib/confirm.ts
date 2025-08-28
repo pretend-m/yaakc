@@ -6,11 +6,12 @@ import { showDialog } from './dialog';
 type ConfirmArgs = {
   id: string;
 } & Pick<DialogProps, 'title' | 'description'> &
-  Pick<ConfirmProps, 'color' | 'confirmText' | 'requireTyping'>;
+  Pick<ConfirmProps, 'color' | 'confirmText' | 'cancelText' | 'requireTyping'>;
 
 export async function showConfirm({
   color,
   confirmText,
+  cancelText,
   requireTyping,
   ...extraProps
 }: ConfirmArgs) {
@@ -20,15 +21,16 @@ export async function showConfirm({
       hideX: true,
       size: 'sm',
       disableBackdropClose: true, // Prevent accidental dismisses
-      render: ({ hide }) => Confirm({ onHide: hide, color, onResult, confirmText, requireTyping }),
+      render: ({ hide }) => Confirm({ onHide: hide, color, onResult, confirmText, cancelText, requireTyping }),
     });
   });
 }
 
-export async function showConfirmDelete({ confirmText, color, ...extraProps }: ConfirmArgs) {
+export async function showConfirmDelete({ confirmText, cancelText, color, ...extraProps }: ConfirmArgs) {
   return showConfirm({
     color: color ?? 'danger',
     confirmText: confirmText ?? 'Delete',
+    cancelText: cancelText ?? 'Cancel',
     ...extraProps,
   });
 }

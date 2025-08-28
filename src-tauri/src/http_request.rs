@@ -208,7 +208,7 @@ pub async fn send_http_request<R: Runtime>(
             return Ok(response_err(
                 &app_handle,
                 &*response.lock().await,
-                format!("Failed to parse URL \"{}\": {}", url_string, e.to_string()),
+                format!("解析URL失败 \"{}\": {}", url_string, e.to_string()),
                 &update_source,
             ));
         }

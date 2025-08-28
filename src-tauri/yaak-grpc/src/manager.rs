@@ -278,7 +278,7 @@ fn uri_from_str(uri_str: &str) -> Result<Uri, String> {
         Ok(uri) => Ok(uri),
         Err(err) => {
             // Uri::from_str basically only returns "invalid format" so we add more context here
-            Err(format!("Failed to parse URL, {}", err.to_string()))
+            Err(format!("解析URL失败: {}", err.to_string()))
         }
     }
 }

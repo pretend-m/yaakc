@@ -55,13 +55,14 @@ export const CookieDropdown = memo(function CookieDropdown() {
                   title: '重命名Cookie Jar',
                   description: (
                     <>
-                      Enter a new name for <InlineCode>{activeCookieJar?.name}</InlineCode>
+                      输入新名称
                     </>
                   ),
                   label: '名称',
-                  confirmText: 'Save',
+                  confirmText: '保存',
+                  cancelText: '取消',
                   placeholder: '新名称',
-                  defaultValue: activeCookieJar?.name,
+                  defaultValue: '新名称',
                 });
                 if (name == null) return;
                 await patchModel(activeCookieJar, { name });

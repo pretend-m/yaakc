@@ -16,7 +16,7 @@ export function copyToClipboard(
       id: 'copied',
       color: 'success',
       icon: 'copy',
-      message: 'Copied to clipboard',
+      message: '已复制到剪贴板',
     });
   }
 }

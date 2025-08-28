@@ -15,8 +15,10 @@ export async function deleteModelWithConfirm(
 
   const confirmed = await showConfirmDelete({
     id: 'delete-model-' + model.id,
-    title: '删除工作区',
+    title: '删除请求',
     requireTyping: options.confirmName,
+    confirmText: '删除',
+    cancelText: '取消',
     description: (
       <>
         永久删除 <InlineCode>{resolvedModelName(model)}</InlineCode>?

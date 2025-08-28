@@ -309,7 +309,7 @@ function usePromptUninstall(pluginId: string | null, name: string) {
       const confirmed = await showConfirmDelete({
         id: 'uninstall-plugin-' + pluginId,
         title: 'Uninstall Plugin',
-        confirmText: 'Uninstall',
+        confirmText: '卸载',
         description: (
           <>
             永久卸载 <InlineCode>{name}</InlineCode>?

@@ -18,7 +18,7 @@ export function useMoveToWorkspace(id: string) {
 
       showDialog({
         id: 'change-workspace',
-        title: 'Move Workspace',
+        title: '移动请求',
         size: 'sm',
         render: ({ hide }) => (
           <MoveToWorkspaceDialog

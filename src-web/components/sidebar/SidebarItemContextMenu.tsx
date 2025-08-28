@@ -68,7 +68,7 @@ export function SidebarItemContextMenu({ child, show, close }: Props) {
         child.model === 'http_request'
           ? [
             {
-              label: 'Send',
+              label: '发送',
               hotKeyAction: 'http_request.send',
               hotKeyLabelOnly: true, // Already bound in URL bar
               leftSlot: <Icon icon="send_horizontal" />,

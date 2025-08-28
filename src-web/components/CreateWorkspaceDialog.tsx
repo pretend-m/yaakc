@@ -66,7 +66,7 @@ export function CreateWorkspaceDialog({ hide }: Props) {
         }
       }}
     >
-      <PlainInput required label="Name" defaultValue={name} onChange={setName} />
+      <PlainInput required label="名称" defaultValue={name} onChange={setName} />
 
       <SyncToFilesystemSetting
         onChange={setSyncConfig}

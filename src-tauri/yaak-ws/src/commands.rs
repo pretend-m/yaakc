@@ -233,7 +233,7 @@ pub(crate) async fn connect<R: Runtime>(
         Err(e) => {
             return Ok(app_handle.db().upsert_websocket_connection(
                 &WebsocketConnection {
-                    error: Some(format!("Failed to parse URL {}", e.to_string())),
+                    error: Some(format!("解析URL失败: {}", e.to_string())),
                     state: WebsocketConnectionState::Closed,
                     ..connection
                 },
