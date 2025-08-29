@@ -15,10 +15,10 @@ export function HttpStatusTag({ response, className, showReason, short }: Props)
   let label = `${status}`;
 
   if (state === 'initialized') {
-    label = short ? 'CONN' : 'CONNECTING';
+    label = short ? '已连接' : '已连接';
     colorClass = 'text-text-subtle';
   } else if (status < 100) {
-    label = short ? 'ERR' : 'ERROR';
+    label = short ? '异常' : '异常';
     colorClass = 'text-danger';
   } else if (status < 200) {
     colorClass = 'text-info';

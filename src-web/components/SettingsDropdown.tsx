@@ -42,11 +42,11 @@ export function SettingsDropdown() {
             });
           },
         },
-        // {
-        //   label: '插件',
-        //   leftSlot: <Icon icon="puzzle" />,
-        //   onSelect: () => openSettings.mutate('plugins'),
-        // },
+        {
+          label: '插件',
+          leftSlot: <Icon icon="puzzle" />,
+          onSelect: () => openSettings.mutate('插件'),
+        },
         { type: 'separator', label: '共享工作区' },
         {
           label: '导入数据',

@@ -157,8 +157,8 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
             { label: 'x-www-form-urlencoded', value: BODY_TYPE_FORM_URLENCODED },
             { label: 'form-data', value: BODY_TYPE_FORM_MULTIPART },
             { type: 'separator', label: '文本内容' },
-            { label: 'graphql', value: BODY_TYPE_GRAPHQL },
             { label: 'json', value: BODY_TYPE_JSON },
+            { label: 'graphql', value: BODY_TYPE_GRAPHQL },
             { label: 'xml', value: BODY_TYPE_XML },
             { label: 'other', value: BODY_TYPE_OTHER },
             { type: 'separator', label: '其他' },
@@ -331,7 +331,7 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
             stateKey={`url.${activeRequest.id}`}
             key={forceUpdateKey + urlKey}
             url={activeRequest.url}
-            placeholder="https://example.com"
+            placeholder="https://www.baidu.com"
             onPasteOverwrite={handlePaste}
             autocomplete={autocomplete}
             onSend={handleSend}
@@ -439,7 +439,7 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
                     stateKey={`other.${activeRequest.id}`}
                   />
                 ) : (
-                  <EmptyStateText>无请求</EmptyStateText>
+                  <EmptyStateText>无请求体</EmptyStateText>
                 )}
               </ConfirmLargeRequestBody>
             </TabContent>

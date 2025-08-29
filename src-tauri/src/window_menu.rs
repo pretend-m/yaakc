@@ -59,7 +59,7 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
                         .accelerator("CmdOrCtrl+,")
                         .build(app_handle)?,
                     &PredefinedMenuItem::separator(app_handle)?,
-                    &PredefinedMenuItem::services(app_handle, None)?,
+//                     &PredefinedMenuItem::services(app_handle, None)?,
                     &PredefinedMenuItem::separator(app_handle)?,
                     &PredefinedMenuItem::hide(app_handle, None)?,
                     &PredefinedMenuItem::hide_others(app_handle, None)?,

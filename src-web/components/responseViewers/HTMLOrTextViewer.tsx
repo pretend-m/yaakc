@@ -24,7 +24,7 @@ export function HTMLOrTextViewer({ response, pretty, textViewerClassName }: Prop
   if (language === 'html' && pretty) {
     return <WebPageViewer response={response} />;
   } else if (rawTextBody.data == null) {
-    return <EmptyStateText>Empty response</EmptyStateText>
+    return <EmptyStateText>响应为空</EmptyStateText>
   } else {
     return (
       <TextViewer

@@ -38,22 +38,22 @@ export function SidebarItemContextMenu({ child, show, close }: Props) {
     if (child.model === 'folder') {
       return [
         {
-          label: 'Send All',
+          label: '发送所有',
           leftSlot: <Icon icon="send_horizontal" />,
           onSelect: () => sendManyRequests.mutate(child.children.map((c) => c.id)),
         },
         {
-          label: 'Settings',
+          label: '设置',
           leftSlot: <Icon icon="settings" />,
           onSelect: () => openFolderSettings(child.id),
         },
         {
-          label: 'Duplicate',
+          label: '复制',
           leftSlot: <Icon icon="copy" />,
           onSelect: () => duplicateModelById(child.model, child.id),
         },
         {
-          label: 'Delete',
+          label: '删除',
           color: 'danger',
           leftSlot: <Icon icon="trash" />,
           onSelect: async () => {

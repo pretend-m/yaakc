@@ -46,7 +46,7 @@ export function SettingsPlugins() {
         addBorders
         tabListClassName="!-ml-3"
         tabs={[
-          { label: '搜索', value: 'search' },
+          // { label: '搜索', value: 'search' },
           {
             label: '已安装',
             value: 'installed',
@@ -60,10 +60,10 @@ export function SettingsPlugins() {
         <TabContent value="installed" className="pb-0">
           <div className="h-full grid grid-rows-[minmax(0,1fr)_auto]">
             <InstalledPlugins />
-            <footer className="grid grid-cols-[minmax(0,1fr)_auto] -mx-4 py-2 px-4 border-t bg-surface-highlight border-border-subtle min-w-0">
+            <footer className="grid grid-cols-[minmax(0,1fr)_auto] py-2 px-4 border-t bg-surface-highlight border-border-subtle min-w-0">
               <SelectFile
                 size="xs"
-                noun="Plugin"
+                noun="插件"
                 directory
                 onChange={({ filePath }) => setDirectory(filePath)}
                 filePath={directory}
@@ -188,12 +188,12 @@ function PluginTableRow({
             <Button
               variant="border"
               color="success"
-              title={`更新 to ${latestVersion}`}
+              title={`更新到 ${latestVersion}`}
               size="xs"
               isLoading={installPluginMutation.isPending}
               onClick={() => installPluginMutation.mutate(name)}
             >
-              Update
+              更新
             </Button>
           ) : plugin == null ? (
             <Button
@@ -204,7 +204,7 @@ function PluginTableRow({
               isLoading={installPluginMutation.isPending}
               onClick={() => installPluginMutation.mutate(name)}
             >
-              Install
+              安装
             </Button>
           ) : null}
           {uninstall != null && (
@@ -215,7 +215,7 @@ function PluginTableRow({
               isLoading={uninstall.isPending}
               onClick={() => uninstall.mutate()}
             >
-              Uninstall
+              卸载
             </Button>
           )}
         </HStack>
@@ -237,8 +237,8 @@ function PluginSearch() {
       <HStack space={1.5}>
         <PlainInput
           hideLabel
-          label="Search"
-          placeholder="Search plugins..."
+          label="搜索"
+          placeholder="搜索插件..."
           onChange={setQuery}
           defaultValue={query}
         />
@@ -254,8 +254,8 @@ function PluginSearch() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableHeaderCell>Name</TableHeaderCell>
-                <TableHeaderCell>Version</TableHeaderCell>
+                <TableHeaderCell>名称</TableHeaderCell>
+                <TableHeaderCell>版本</TableHeaderCell>
                 <TableHeaderCell />
               </TableRow>
             </TableHead>
@@ -286,8 +286,8 @@ function InstalledPlugins() {
     <Table>
       <TableHead>
         <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Version</TableHeaderCell>
+          <TableHeaderCell>名称</TableHeaderCell>
+          <TableHeaderCell>版本</TableHeaderCell>
           <TableHeaderCell />
         </TableRow>
       </TableHead>
@@ -308,8 +308,9 @@ function usePromptUninstall(pluginId: string | null, name: string) {
 
       const confirmed = await showConfirmDelete({
         id: 'uninstall-plugin-' + pluginId,
-        title: 'Uninstall Plugin',
+        title: '卸载插件',
         confirmText: '卸载',
+        cancelText: '取消',
         description: (
           <>
             永久卸载 <InlineCode>{name}</InlineCode>?

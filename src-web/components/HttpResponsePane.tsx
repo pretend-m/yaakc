@@ -167,13 +167,13 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
                         <VStack space={3}>
                           <HStack space={3}>
                             <LoadingIcon className="text-text-subtlest" />
-                            Sending Request
+                            发送请求
                           </HStack>
                           <Button size="sm" variant="border" onClick={() => cancel.mutate()}>Cancel</Button>
                         </VStack>
                       </EmptyStateText>
                     ) : activeResponse.state === 'closed' && activeResponse.contentLength === 0 ? (
-                      <EmptyStateText>Empty </EmptyStateText>
+                      <EmptyStateText>空</EmptyStateText>
                     ) : mimeType?.match(/^text\/event-stream/i) && viewMode === 'pretty' ? (
                       <EventStreamViewer response={activeResponse} />
                     ) : mimeType?.match(/^image\/svg/) ? (
@@ -220,7 +220,7 @@ function EnsureCompleteResponse({
   render: (v: { bodyPath: string }) => ReactNode;
 }) {
   if (response.bodyPath === null) {
-    return <div>Empty response body</div>;
+    return <div>响应为空</div>;
   }
 
   // Wait until the response has been fully-downloaded

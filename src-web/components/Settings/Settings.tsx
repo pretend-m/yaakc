@@ -23,9 +23,9 @@ const TAB_GENERAL = '通用';
 const TAB_INTERFACE = '界面';
 const TAB_THEME = '主题';
 const TAB_PROXY = '代理';
-// const TAB_PLUGINS = '插件';
+const TAB_PLUGINS = '插件';
 // const TAB_LICENSE = '许可证';
-const tabs = [TAB_GENERAL, TAB_THEME, TAB_INTERFACE, TAB_PROXY] as const;
+const tabs = [TAB_GENERAL, TAB_THEME, TAB_INTERFACE, TAB_PROXY, TAB_PLUGINS] as const;
 export type SettingsTab = (typeof tabs)[number];
 
 export default function Settings({ hide }: Props) {
@@ -61,7 +61,7 @@ export default function Settings({ hide }: Props) {
             justifyContent="center"
             className="w-full h-full grid grid-cols-[1fr_auto] pointer-events-none"
           >
-            <div className={classNames(type() === 'macos' ? 'text-center' : 'pl-2')}>Settings</div>
+            <div className={classNames(type() === 'macos' ? 'text-center' : 'pl-2')}>设置</div>
           </HStack>
         </HeaderSize>
       )}
@@ -70,7 +70,7 @@ export default function Settings({ hide }: Props) {
         value={tab}
         addBorders
         tabListClassName="min-w-[10rem] bg-surface x-theme-sidebar border-r border-border pl-3"
-        label="Settings"
+        label="设置"
         onChangeValue={setTab}
         tabs={tabs.map((value) => ({ value, label: capitalize(value) }))}
       >
@@ -83,9 +83,9 @@ export default function Settings({ hide }: Props) {
         <TabContent value={TAB_THEME} className="overflow-y-auto h-full px-4">
           <SettingsTheme />
         </TabContent>
-        {/*<TabContent value={TAB_PLUGINS} className="h-full px-4 grid grid-rows-1">*/}
-        {/*  <SettingsPlugins />*/}
-        {/*</TabContent>*/}
+        <TabContent value={TAB_PLUGINS} className="h-full px-4 grid grid-rows-1">
+          <SettingsPlugins />
+        </TabContent>
         <TabContent value={TAB_PROXY} className="overflow-y-auto h-full px-4">
           <SettingsProxy />
         </TabContent>
