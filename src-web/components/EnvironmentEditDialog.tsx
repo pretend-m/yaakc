@@ -112,7 +112,7 @@ export const EnvironmentEditDialog = function ({ initialEnvironment }: Props) {
                   <IconButton
                     size="sm"
                     iconSize="md"
-                    title="Add sub environment"
+                    title="添加子环境"
                     icon="plus_circle"
                     iconClassName="text-text-subtlest group-hover:text-text-subtle"
                     className="group mr-0.5"
@@ -148,7 +148,7 @@ export const EnvironmentEditDialog = function ({ initialEnvironment }: Props) {
         selectedEnvironment == null ? (
           <div className="p-3 mt-10">
             <Banner color="danger">
-              Failed to find selected environment <InlineCode>{selectedEnvironmentId}</InlineCode>
+              找不到所选环境 <InlineCode>{selectedEnvironmentId}</InlineCode>
             </Banner>
           </div>
         ) : (
