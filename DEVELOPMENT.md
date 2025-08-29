@@ -42,6 +42,11 @@ After bootstrapping, start the app in development mode:
 npm start
 ```
 
+## 打包
+```shell
+npm run tauri build
+```
+
 ## SQLite Migrations
 
 New migrations can be created from the `src-tauri/` directory:

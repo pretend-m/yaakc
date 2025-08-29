@@ -115,7 +115,7 @@ export function WorkspaceEncryptionSetting({ size, expanded, onDone, onEnabledEn
           await enableEncryption(workspaceMeta.workspaceId);
         }}
       >
-        Enable Encryption
+        启用加密
       </Button>
       {expanded ? (
         <Banner color="info" className="mb-6">
