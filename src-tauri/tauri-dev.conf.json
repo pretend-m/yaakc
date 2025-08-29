@@ -1,6 +1,6 @@
 {
-  "productName": "Yaak",
-  "identifier": "app.yaak.desktop.dev",
+  "productName": "yaakc",
+  "identifier": "app.yaakc.desktop.dev",
   "bundle": {
     "icon": [
       "icons/dev/32x32.png",

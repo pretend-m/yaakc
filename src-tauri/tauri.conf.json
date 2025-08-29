@@ -1,7 +1,7 @@
 {
   "productName": "yaakc",
   "version": "1.0.0",
-  "identifier": "app.yaak.desktop",
+  "identifier": "app.yaakc.desktop",
   "build": {
     "beforeBuildCommand": "npm run tauri-before-build",
     "beforeDevCommand": "npm run tauri-before-dev",
@@ -37,10 +37,10 @@
     }
   },
   "bundle": {
-    "publisher": "Yaak",
+    "publisher": "yaakc",
     "license": "MIT",
-    "copyright": "Yaak",
-    "homepage": "https://yaak.app",
+    "copyright": "yaakc",
+    "homepage": "https://yaakc.app",
     "active": true,
     "category": "DeveloperTool",
     "externalBin": [

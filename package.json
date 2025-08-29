@@ -1,10 +1,10 @@
 {
-  "name": "yaak-chinese",
+  "name": "yaakc",
   "private": true,
   "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mountain-loop/yaak.git"
+    "url": "https://github.com/pretend-m/yaakc.git"
   },
   "workspaces": [
     "packages/plugin-runtime",
