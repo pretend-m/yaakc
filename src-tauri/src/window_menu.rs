@@ -129,7 +129,6 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
             )?,
             &window_menu,
             &help_menu,
-            #[cfg(dev)]
             &Submenu::with_items(
                 app_handle,
                 "开发",
@@ -143,11 +142,6 @@ pub fn app_menu<R: Runtime>(app_handle: &AppHandle<R>) -> tauri::Result<Menu<R>>
                         .build(app_handle)?,
                     &MenuItemBuilder::with_id("dev.reset_size".to_string(), "重置大小")
                         .build(app_handle)?,
-                    &MenuItemBuilder::with_id(
-                        "dev.generate_theme_css".to_string(),
-                        "生成主题CSS",
-                    )
-                    .build(app_handle)?,
                 ],
             )?,
         ],

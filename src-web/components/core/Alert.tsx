@@ -13,7 +13,7 @@ export function Alert({ onHide, body }: AlertProps) {
       <div>{body}</div>
       <HStack space={2} justifyContent="end">
         <Button className="focus" color="primary" onClick={onHide}>
-          Okay
+          好的
         </Button>
       </HStack>
     </VStack>

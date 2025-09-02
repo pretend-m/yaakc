@@ -417,7 +417,7 @@ export function PairEditorRow({
       showDialog({
         id: 'pair-edit-multiline',
         size: 'dynamic',
-        title: <>Edit {pair.name}</>,
+        title: <>编辑{pair.name}</>,
         render: ({ hide }) => (
           <MultilineEditDialog
             hide={hide}
@@ -433,12 +433,12 @@ export function PairEditorRow({
   const defaultItems = useMemo(
     (): DropdownItem[] => [
       {
-        label: 'Edit Multi-line',
+        label: '编辑多行',
         onSelect: handleEditMultiLineValue,
         hidden: !allowMultilineValues,
       },
       {
-        label: 'Delete',
+        label: '删除',
         onSelect: handleDelete,
         color: 'danger',
       },
@@ -518,7 +518,7 @@ export function PairEditorRow({
             hideLabel
             size="sm"
             containerClassName={classNames(isLast && 'border-dashed')}
-            label="Name"
+            label="名称"
             name={`name[${index}]`}
             onFocus={handleFocusName}
             placeholder={namePlaceholder ?? 'name'}
@@ -538,7 +538,7 @@ export function PairEditorRow({
             forceUpdateKey={forceUpdateKey}
             containerClassName={classNames(isLast && 'border-dashed')}
             defaultValue={pair.name}
-            label="Name"
+            label="名称"
             name={`name[${index}]`}
             onChange={handleChangeName}
             onFocus={handleFocusName}
@@ -621,7 +621,7 @@ export function PairEditorRow({
             iconSize="sm"
             size="xs"
             icon={isLast || disabled ? 'empty' : 'chevron_down'}
-            title="Select form data type"
+            title="选择表单数据类型"
             className="text-text-subtle"
           />
         </Dropdown>
@@ -631,8 +631,8 @@ export function PairEditorRow({
 }
 
 const fileItems: RadioDropdownItem<string>[] = [
-  { label: 'Text', value: 'text' },
-  { label: 'File', value: 'file' },
+  { label: '文本', value: 'text' },
+  { label: '文件', value: 'file' },
 ];
 
 function FileActionsDropdown({
@@ -661,13 +661,13 @@ function FileActionsDropdown({
   const itemsAfter = useMemo<DropdownItem[]>(
     () => [
       {
-        label: 'Edit Multi-Line',
+        label: '编辑多行',
         leftSlot: <Icon icon="file_code" />,
         hidden: pair.isFile,
         onSelect: editMultiLine,
       },
       {
-        label: 'Set Content-Type',
+        label: '设置Content-Type',
         leftSlot: <Icon icon="pencil" />,
         onSelect: async () => {
           const contentType = await showPrompt({
@@ -684,7 +684,7 @@ function FileActionsDropdown({
         },
       },
       {
-        label: 'Unset File',
+        label: '未设置文件',
         leftSlot: <Icon icon="x" />,
         hidden: pair.isFile,
         onSelect: async () => {
@@ -692,7 +692,7 @@ function FileActionsDropdown({
         },
       },
       {
-        label: 'Delete',
+        label: '删除',
         onSelect: onDelete,
         variant: 'danger',
         leftSlot: <Icon icon="trash" />,
@@ -755,7 +755,7 @@ function MultilineEditDialog({
             hide();
           }}
         >
-          Done
+          完成
         </Button>
       </div>
     </div>

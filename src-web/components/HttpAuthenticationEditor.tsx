@@ -76,11 +76,11 @@ export function HttpAuthenticationEditor({ model }: Props) {
   const wasAuthInherited = inheritedAuth?.id !== model.id;
   if (wasAuthInherited) {
     const name = resolvedModelName(inheritedAuth);
-    const cta = inheritedAuth.model === 'workspace' ? 'Workspace' : name;
+    const cta = inheritedAuth.model === 'workspace' ? '工作区' : name;
     return (
       <EmptyStateText>
         <p>
-          Inherited from{' '}
+          继承{' '}
           <button
             className="underline hover:text-text"
             onClick={() => {

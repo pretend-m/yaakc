@@ -148,6 +148,11 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
   const tabs = useMemo<TabItem[]>(
     () => [
       {
+        value: TAB_PARAMS,
+        rightSlot: <CountBadge count={urlParameterPairs.length} />,
+        label: '参数',
+      },
+      {
         value: TAB_BODY,
         rightSlot: numParams > 0 ? <CountBadge count={numParams} /> : null,
         options: {
@@ -213,11 +218,6 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
             }
           },
         },
-      },
-      {
-        value: TAB_PARAMS,
-        rightSlot: <CountBadge count={urlParameterPairs.length} />,
-        label: '参数',
       },
       ...headersTab,
       ...authTab,

@@ -99,6 +99,121 @@ const stateFields = { history: historyField, folds: foldState };
 const emptyVariables: EnvironmentVariable[] = [];
 const emptyExtension: Extension = [];
 
+// 翻译搜索面板函数
+function translateSearchPanel(panel: HTMLElement): void {
+  // 翻译输入框placeholder
+  const findInput = panel.querySelector('input[placeholder="Find"]');
+  const replaceInput = panel.querySelector('input[placeholder="Replace"]');
+
+  if (findInput) (findInput as HTMLInputElement).placeholder = "查找";
+  if (replaceInput) (replaceInput as HTMLInputElement).placeholder = "替换";
+
+  // 翻译按钮文本
+  panel.querySelectorAll('button.cm-button').forEach((button) => {
+    const buttonElement = button as HTMLButtonElement;
+    const name = buttonElement.textContent?.trim().toLowerCase().replace("\"","")
+    console.log(name)
+    switch (name) {
+      case 'next':
+        buttonElement.textContent = '下一个';
+        break;
+      case 'previous':
+        buttonElement.textContent = '上一个';
+        break;
+      case 'all':
+        buttonElement.textContent = '全部';
+        break;
+      case 'replace':
+        buttonElement.textContent = '替换';
+        break;
+      case 'replace all':
+        buttonElement.textContent = '全部替换';
+        break;
+      case 'close':
+        buttonElement.textContent = '关闭';
+        break;
+      default:
+        break;
+    }
+  });
+
+  // 翻译标签文本
+  panel.querySelectorAll('label').forEach((label) => {
+    const input = label.querySelector('input');
+    if (input) {
+      const inputName = input.getAttribute('name');
+      let textContent = '';
+
+      switch (inputName) {
+        case 'case':
+          textContent = '区分大小写';
+          break;
+        case 're':
+          textContent = '正则表达式';
+          break;
+        case 'word':
+          textContent = '全词匹配';
+          break;
+        default:
+          return;
+      }
+
+      // 创建新的文本节点
+      const textNode = document.createTextNode(textContent);
+
+      // 清空label并重新添加input和文本
+      label.innerHTML = '';
+      label.appendChild(input);
+      label.appendChild(textNode);
+    }
+  });
+
+  // 标记已翻译
+  panel.dataset.translated = 'true';
+}
+
+// 监听搜索面板的创建
+function setupSearchPanelListener() {
+  // 使用MutationObserver监听DOM变化
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        if (node.nodeType === 1) {
+          const element = node as HTMLElement;
+          if (element.classList.contains('cm-search') &&
+            element.classList.contains('cm-panel') &&
+            !element.dataset.translated) {
+            // 立即翻译
+            translateSearchPanel(element);
+
+            // 监听面板内部的变化（可能动态添加内容）
+            const panelObserver = new MutationObserver(() => {
+              if (!element.dataset.translated) {
+                translateSearchPanel(element);
+              }
+            });
+
+            panelObserver.observe(element, {
+              childList: true,
+              subtree: true,
+              characterData: true
+            });
+          }
+        }
+      }
+    }
+  });
+
+  // 开始观察整个document
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
+  return observer;
+}
+
+
 export const Editor = forwardRef<EditorView | undefined, EditorProps>(function Editor(
   {
     actions,
@@ -171,6 +286,23 @@ export const Editor = forwardRef<EditorView | undefined, EditorProps>(function E
 
   const cm = useRef<{ view: EditorView; languageCompartment: Compartment } | null>(null);
   useImperativeHandle(ref, () => cm.current?.view, []);
+
+  // 设置搜索面板监听
+  useEffect(() => {
+    const observer = setupSearchPanelListener();
+
+    // 立即检查是否已经有搜索面板存在（可能在组件挂载前就已经打开）
+    const existingPanels = document.querySelectorAll('.cm-search.cm-panel');
+    existingPanels.forEach(panel => {
+      if (!(panel as HTMLElement).dataset.translated) {
+        translateSearchPanel(panel as HTMLElement);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   // Use ref so we can update the handler without re-initializing the editor
   const handleChange = useRef<EditorProps['onChange']>(onChange);
@@ -451,6 +583,15 @@ export const Editor = forwardRef<EditorView | undefined, EditorProps>(function E
           : EditorState.create(config);
 
         const view = new EditorView({ state, parent: container });
+
+        setTimeout(() => {
+          const panels = document.querySelectorAll('.cm-search.cm-panel');
+          panels.forEach(panel => {
+            if (!(panel as HTMLElement).dataset.translated) {
+              translateSearchPanel(panel as HTMLElement);
+            }
+          });
+        }, 100);
 
         // For large documents, the parser may parse the max number of lines and fail to add
         // things like fold markers because of it.

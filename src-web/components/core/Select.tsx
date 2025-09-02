@@ -97,7 +97,7 @@ export function Select<T extends string>({
               return (
                 <option key={o.value} value={o.value}>
                   {o.label}
-                  {o.value === defaultValue && ' (default)'}
+                  {o.value === defaultValue && '(默认)'}
                 </option>
               );
             })}

@@ -94,14 +94,14 @@ export function WebsocketRequestPane({ style, fullHeight, className, activeReque
   const tabs = useMemo<TabItem[]>(() => {
     return [
       {
-        value: TAB_MESSAGE,
-        label: '消息',
-      } as TabItem,
-      {
         value: TAB_PARAMS,
         rightSlot: <CountBadge count={urlParameterPairs.length} />,
         label: '参数',
       },
+      {
+        value: TAB_MESSAGE,
+        label: '消息',
+      } as TabItem,
       ...headersTab,
       ...authTab,
       {

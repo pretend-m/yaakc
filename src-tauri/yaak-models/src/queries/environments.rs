@@ -39,7 +39,7 @@ impl<'a> DbContext<'a> {
                 &Environment {
                     workspace_id: workspace_id.to_string(),
                     base: true,
-                    name: "Global Variables".to_string(),
+                    name: "全局变量".to_string(),
                     ..Default::default()
                 },
                 &UpdateSource::Background,

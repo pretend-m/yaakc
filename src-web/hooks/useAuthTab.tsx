@@ -17,7 +17,7 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
 
     const tab: TabItem = {
       value: tabValue,
-      label: '继承',
+      label: 'Auth',
       options: {
         value: model.authenticationType,
         items: [
