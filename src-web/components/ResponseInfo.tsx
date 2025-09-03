@@ -11,10 +11,10 @@ export function ResponseInfo({ response }: Props) {
   return (
     <div className="overflow-auto h-full pb-4">
       <KeyValueRows>
-        <KeyValueRow labelColor="info" label="Version">
+        <KeyValueRow labelColor="info" label="版本">
           {response.version}
         </KeyValueRow>
-        <KeyValueRow labelColor="info" label="Remote Address">
+        <KeyValueRow labelColor="info" label="远程地址">
           {response.remoteAddr}
         </KeyValueRow>
         <KeyValueRow
