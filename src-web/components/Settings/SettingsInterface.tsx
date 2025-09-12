@@ -65,7 +65,7 @@ export function SettingsInterface() {
           size="sm"
           name="interfaceFontSize"
           label="界面字体大小"
-          defaultValue="15"
+          defaultValue="14"
           value={`${settings.interfaceFontSize}`}
           options={fontSizeOptions}
           onChange={(v) => patchModel(settings, { interfaceFontSize: parseInt(v) })}

@@ -33,7 +33,13 @@ export function HttpStatusTag({ response, className, showReason, short }: Props)
   }
 
   return (
-    <span className={classNames(className, 'font-mono', colorClass)}>
+    <span className={classNames(
+      className,
+      colorClass,
+      /[\u4e00-\u9fa5]/.test(label) ? 'font-sans' : 'font-mono',
+      'whitespace-nowrap',
+      'inline-block'
+    )}>
       {label} {showReason && 'statusReason' in response ? response.statusReason : null}
     </span>
   );

@@ -169,7 +169,7 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
                             <LoadingIcon className="text-text-subtlest" />
                             发送请求
                           </HStack>
-                          <Button size="sm" variant="border" onClick={() => cancel.mutate()}>Cancel</Button>
+                          <Button size="sm" variant="border" onClick={() => cancel.mutate()}>取消</Button>
                         </VStack>
                       </EmptyStateText>
                     ) : activeResponse.state === 'closed' && activeResponse.contentLength === 0 ? (

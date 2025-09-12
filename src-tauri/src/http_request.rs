@@ -513,7 +513,7 @@ pub async fn send_http_request<R: Runtime>(
             let mut r = response.lock().await;
             r.elapsed_headers = start.elapsed().as_millis() as i32;
             r.elapsed = start.elapsed().as_millis() as i32;
-            return Ok(response_err(&app_handle, &r, "Request was cancelled".to_string(), &update_source));
+            return Ok(response_err(&app_handle, &r, "请求已取消".to_string(), &update_source));
         }
     };
 

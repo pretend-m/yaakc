@@ -525,6 +525,19 @@ export const Editor = forwardRef<EditorView | undefined, EditorProps>(function E
     graphQLSchema,
   ]);
 
+  const fontSizeCompartment = useRef(new Compartment());
+  useEffect(() => {
+    if (!cm.current) return;
+    const size = Number(settings.editorFontSize) || 14;
+    const ext = EditorView.theme({
+      ".cm-content": {
+        fontSize: `${size}px`
+      }
+    });
+    const effects = fontSizeCompartment.current.reconfigure(ext);
+    cm.current.view.dispatch({ effects });
+  }, [settings.editorFontSize]);
+
   // Initialize the editor when ref mounts
   const initEditorRef = useCallback(
     function initEditorRef(container: HTMLDivElement | null) {
@@ -548,6 +561,13 @@ export const Editor = forwardRef<EditorView | undefined, EditorProps>(function E
           graphQLSchema: graphQLSchema ?? null,
         });
         const extensions = [
+          fontSizeCompartment.current.of(
+            EditorView.theme({
+              ".cm-content": {
+                fontSize: `${Number(settings.editorFontSize) || 13}px`
+              }
+            })
+          ),
           languageCompartment.of(langExt),
           placeholderCompartment.current.of(placeholderExt(placeholderElFromText(placeholder))),
           wrapLinesCompartment.current.of(wrapLines ? EditorView.lineWrapping : emptyExtension),
