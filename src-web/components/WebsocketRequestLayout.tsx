@@ -15,6 +15,7 @@ export function WebsocketRequestLayout({ activeRequest, style }: Props) {
   return (
     <SplitLayout
       name="websocket_layout"
+      layout="vertical"
       className="p-3 gap-1.5"
       style={style}
       firstSlot={({ orientation, style }) => (

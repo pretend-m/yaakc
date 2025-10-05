@@ -23,6 +23,7 @@ export function HttpRequestLayout({ activeRequest, style }: Props) {
   const requestResponseSplit = ({ style }: Pick<SlotProps, 'style'>) => (
     <SplitLayout
       name="http_layout"
+      layout="vertical"
       className="p-3 gap-1.5"
       style={style}
       firstSlot={({ orientation, style }) => (

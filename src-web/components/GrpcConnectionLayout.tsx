@@ -78,6 +78,7 @@ export function GrpcConnectionLayout({ style }: Props) {
   return (
     <SplitLayout
       name="grpc_layout"
+      layout="vertical"
       className="p-3 gap-1.5"
       style={style}
       firstSlot={({ style }) => (
