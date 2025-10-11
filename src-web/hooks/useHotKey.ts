@@ -63,7 +63,7 @@ const hotkeyLabels: Record<HotkeyAction, string> = {
   'settings.show': '打开设置',
   'sidebar.delete_selected_item': '删除请求',
   'sidebar.focus': '切换侧边栏',
-  'url_bar.focus': '选中url',
+  'url_bar.focus': '选中Url',
   'workspace_settings.show': '打开工作区设置',
 };
 

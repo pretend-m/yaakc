@@ -27,42 +27,42 @@ export function SettingsGeneral() {
   return (
     <VStack space={1.5} className="mb-4">
       <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-1">
-        <Select
-          name="updateChannel"
-          label="更新渠道"
-          labelPosition="left"
-          labelClassName="w-[14rem]"
-          size="sm"
-          value={settings.updateChannel}
-          onChange={(updateChannel) => patchModel(settings, { updateChannel })}
-          options={[
-            { label: '稳定版', value: 'stable' },
-            { label: 'Beta (更新更频繁)', value: 'beta' },
-          ]}
-        />
-        <IconButton
-          variant="border"
-          size="sm"
-          title="检查更新"
-          icon="refresh"
-          spin={checkForUpdates.isPending}
-          onClick={() => checkForUpdates.mutateAsync()}
-        />
+        {/*<Select*/}
+        {/*  name="updateChannel"*/}
+        {/*  label="更新渠道"*/}
+        {/*  labelPosition="left"*/}
+        {/*  labelClassName="w-[14rem]"*/}
+        {/*  size="sm"*/}
+        {/*  value={settings.updateChannel}*/}
+        {/*  onChange={(updateChannel) => patchModel(settings, { updateChannel })}*/}
+        {/*  options={[*/}
+        {/*    { label: '稳定版', value: 'stable' },*/}
+        {/*    { label: 'Beta (更新更频繁)', value: 'beta' },*/}
+        {/*  ]}*/}
+        {/*/>*/}
+        {/*<IconButton*/}
+        {/*  variant="border"*/}
+        {/*  size="sm"*/}
+        {/*  title="检查更新"*/}
+        {/*  icon="refresh"*/}
+        {/*  spin={checkForUpdates.isPending}*/}
+        {/*  onClick={() => checkForUpdates.mutateAsync()}*/}
+        {/*/>*/}
       </div>
 
-      <Select
-        name="autoupdate"
-        value={settings.autoupdate ? 'auto' : 'manual'}
-        label="更新行为"
-        labelPosition="left"
-        size="sm"
-        labelClassName="w-[14rem]"
-        onChange={(v) => patchModel(settings, { autoupdate: v === 'auto' })}
-        options={[
-          { label: '自动', value: 'auto' },
-          { label: '手动', value: 'manual' },
-        ]}
-      />
+      {/*<Select*/}
+      {/*  name="autoupdate"*/}
+      {/*  value={settings.autoupdate ? 'auto' : 'manual'}*/}
+      {/*  label="更新行为"*/}
+      {/*  labelPosition="left"*/}
+      {/*  size="sm"*/}
+      {/*  labelClassName="w-[14rem]"*/}
+      {/*  onChange={(v) => patchModel(settings, { autoupdate: v === 'auto' })}*/}
+      {/*  options={[*/}
+      {/*    { label: '自动', value: 'auto' },*/}
+      {/*    { label: '手动', value: 'manual' },*/}
+      {/*  ]}*/}
+      {/*/>*/}
 
       <Select
         name="switchWorkspaceBehavior"

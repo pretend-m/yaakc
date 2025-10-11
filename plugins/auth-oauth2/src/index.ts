@@ -21,9 +21,9 @@ import { deleteToken, getToken, resetDataDirKey } from './store';
 type GrantType = 'authorization_code' | 'implicit' | 'password' | 'client_credentials';
 
 const grantTypes: FormInputSelectOption[] = [
-  { label: 'Authorization Code', value: 'authorization_code' },
+  { label: '授权码', value: 'authorization_code' },
   { label: '隐式', value: 'implicit' },
-  { label: '资源所有者密码凭证', value: 'password' },
+  { label: '密码', value: 'password' },
   { label: '客户端凭证', value: 'client_credentials' },
 ];
 

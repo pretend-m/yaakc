@@ -308,7 +308,7 @@ export function GrpcRequestPane({
             />
             <MarkdownEditor
               name="request-description"
-              placeholder="Request description"
+              placeholder="请求描述"
               defaultValue={activeRequest.description}
               stateKey={`description.${activeRequest.id}`}
               onChange={handleDescriptionChange}

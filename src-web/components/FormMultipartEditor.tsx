@@ -22,6 +22,7 @@ export function FormMultipartEditor({ request, forceUpdateKey, onChange }: Props
       })),
     [request.body.form],
   );
+  console.log(pairs)
 
   const handleChange = useCallback<PairEditorProps['onChange']>(
     (pairs) =>
@@ -51,7 +52,7 @@ export function FormMultipartEditor({ request, forceUpdateKey, onChange }: Props
       pairs={pairs}
       onChange={handleChange}
       forceUpdateKey={forceUpdateKey}
-      stateKey={'multipart.' + request.id}
+      stateKey={`multipart.${request.id}`}
     />
   );
 }

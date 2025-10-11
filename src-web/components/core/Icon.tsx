@@ -95,6 +95,7 @@ const icons = {
   puzzle: lucide.PuzzleIcon,
   refresh: lucide.RefreshCwIcon,
   rocket: lucide.RocketIcon,
+  rows_2: lucide.Rows2Icon,
   save: lucide.SaveIcon,
   search: lucide.SearchIcon,
   send_horizontal: lucide.SendHorizonalIcon,

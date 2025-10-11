@@ -164,16 +164,18 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
                   <ConfirmLargeResponse response={activeResponse}>
                     {activeResponse.state === 'initialized' ? (
                       <EmptyStateText>
-                        <VStack space={3}>
+                        <VStack space={3} alignItems="center">
                           <HStack space={3}>
                             <LoadingIcon className="text-text-subtlest" />
-                            发送请求
+                            {/*请求中*/}
                           </HStack>
                           <Button size="sm" variant="border" onClick={() => cancel.mutate()}>取消</Button>
                         </VStack>
                       </EmptyStateText>
                     ) : activeResponse.state === 'closed' && activeResponse.contentLength === 0 ? (
-                      <EmptyStateText>空</EmptyStateText>
+                      <EmptyStateText>
+                          {/*空*/}
+                      </EmptyStateText>
                     ) : mimeType?.match(/^text\/event-stream/i) && viewMode === 'pretty' ? (
                       <EventStreamViewer response={activeResponse} />
                     ) : mimeType?.match(/^image\/svg/) ? (

@@ -4,6 +4,7 @@ import { useAtomValue } from 'jotai';
 import type { CSSProperties } from 'react';
 import React from 'react';
 import { useCurrentGraphQLSchema } from '../hooks/useIntrospectGraphQL';
+import { workspaceLayoutAtom } from '../lib/atoms';
 import type { SlotProps } from './core/SplitLayout';
 import { SplitLayout } from './core/SplitLayout';
 import { GraphQLDocsExplorer } from './graphql/GraphQLDocsExplorer';
@@ -19,11 +20,12 @@ interface Props {
 export function HttpRequestLayout({ activeRequest, style }: Props) {
   const showGraphQLDocExplorer = useAtomValue(showGraphQLDocExplorerAtom);
   const graphQLSchema = useCurrentGraphQLSchema(activeRequest);
+  const workspaceLayout = useAtomValue(workspaceLayoutAtom);
 
   const requestResponseSplit = ({ style }: Pick<SlotProps, 'style'>) => (
     <SplitLayout
       name="http_layout"
-      layout="vertical"
+      layout={workspaceLayout}
       className="p-3 gap-1.5"
       style={style}
       firstSlot={({ orientation, style }) => (

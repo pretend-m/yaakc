@@ -248,6 +248,8 @@ export const PairEditor = forwardRef<PairEditorRef, PairEditorProps>(function Pa
         if (!showAll && i > MAX_INITIAL_PAIRS) return null;
 
         const isLast = i === pairs.length - 1;
+        console.log(isLast)
+
         return (
           <Fragment key={p.id}>
             {hoveredIndex === i && <DropMarker />}
@@ -489,14 +491,14 @@ export function PairEditorRow({
         title={pair.enabled ? 'Disable item' : 'Enable item'}
         disabled={isLast || disabled}
         checked={isLast ? false : !!pair.enabled}
-        className={classNames(isLast && '!opacity-disabled')}
+        // className={classNames(isLast && '!opacity-disabled')}
         onChange={handleChangeEnabled}
       />
-      {!isLast && !disableDrag ? (
+      {!disableDrag ? (
         <div
           className={classNames(
             'py-2 h-7 w-4 flex items-center',
-            'justify-center opacity-0 group-hover:opacity-70',
+            'justify-center opacity-30 group-hover:opacity-70',
           )}
         >
           <Icon size="sm" icon="grip_vertical" className="pointer-events-none" />
@@ -511,19 +513,7 @@ export function PairEditorRow({
           'gap-0.5 grid-cols-1 grid-rows-2',
         )}
       >
-        {isLast ? (
-          // Use PlainInput for last ones because there's a unique bug where clicking below
-          // the Codemirror input focuses it.
-          <PlainInput
-            hideLabel
-            size="sm"
-            containerClassName={classNames(isLast && 'border-dashed')}
-            label="名称"
-            name={`name[${index}]`}
-            onFocus={handleFocusName}
-            placeholder={namePlaceholder ?? 'name'}
-          />
-        ) : (
+        {
           <Input
             ref={nameInputRef}
             hideLabel
@@ -547,7 +537,7 @@ export function PairEditorRow({
             autocompleteVariables={nameAutocompleteVariables}
             autocompleteFunctions={nameAutocompleteFunctions}
           />
-        )}
+        }
         <div className="w-full grid grid-cols-[minmax(0,1fr)_auto] gap-1 items-center">
           {pair.isFile ? (
             <SelectFile
@@ -556,19 +546,6 @@ export function PairEditorRow({
               size="xs"
               filePath={pair.value}
               onChange={handleChangeValueFile}
-            />
-          ) : isLast ? (
-            // Use PlainInput for last ones because there's a unique bug where clicking below
-            // the Codemirror input focuses it.
-            <PlainInput
-              hideLabel
-              disabled={disabled}
-              size="sm"
-              containerClassName={classNames(isLast && 'border-dashed')}
-              label="Value"
-              name={`value[${index}]`}
-              onFocus={handleFocusValue}
-              placeholder={valuePlaceholder ?? 'value'}
             />
           ) : pair.value.includes('\n') ? (
             <Button
@@ -620,7 +597,8 @@ export function PairEditorRow({
           <IconButton
             iconSize="sm"
             size="xs"
-            icon={isLast || disabled ? 'empty' : 'chevron_down'}
+            disabled={isLast}
+            icon={'chevron_down'}
             title="选择表单数据类型"
             className="text-text-subtle"
           />
@@ -672,12 +650,13 @@ function FileActionsDropdown({
         onSelect: async () => {
           const contentType = await showPrompt({
             id: 'content-type',
-            title: 'Override Content-Type',
+            title: '设置Content-Type',
             label: 'Content-Type',
             placeholder: 'text/plain',
             defaultValue: pair.contentType ?? '',
-            confirmText: 'Set',
-            description: 'Leave blank to auto-detect',
+            confirmText: '设置',
+            cancelText: '取消',
+            description: '为空自动检测',
           });
           if (contentType == null) return;
           onChangeContentType(contentType);

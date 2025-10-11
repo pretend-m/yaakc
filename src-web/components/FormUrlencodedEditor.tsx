@@ -20,6 +20,7 @@ export function FormUrlencodedEditor({ request, forceUpdateKey, onChange }: Prop
       })),
     [request.body.form],
   );
+  console.log(pairs)
 
   const handleChange = useCallback<PairEditorProps['onChange']>(
     (pairs) =>

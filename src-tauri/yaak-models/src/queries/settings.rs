@@ -22,7 +22,7 @@ impl<'a> DbContext<'a> {
             editor_font: None,
             editor_keymap: EditorKeymap::Default,
             editor_soft_wrap: true,
-            interface_font_size: 15,
+            interface_font_size: 14,
             interface_scale: 1.0,
             interface_font: None,
             hide_window_controls: false,

@@ -162,13 +162,13 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
             { label: 'x-www-form-urlencoded', value: BODY_TYPE_FORM_URLENCODED },
             { label: 'form-data', value: BODY_TYPE_FORM_MULTIPART },
             { type: 'separator', label: '文本内容' },
-            { label: 'json', value: BODY_TYPE_JSON },
-            { label: 'graphql', value: BODY_TYPE_GRAPHQL },
-            { label: 'xml', value: BODY_TYPE_XML },
-            { label: 'other', value: BODY_TYPE_OTHER },
+            { label: 'JSON', value: BODY_TYPE_JSON },
+            { label: 'GraphQL', value: BODY_TYPE_GRAPHQL },
+            { label: 'XML', value: BODY_TYPE_XML },
+            { label: 'Other', value: BODY_TYPE_OTHER },
             { type: 'separator', label: '其他' },
-            { label: 'binary', value: BODY_TYPE_BINARY },
-            { label: 'none', shortLabel: 'none', value: BODY_TYPE_NONE },
+            { label: 'Binary File', value: BODY_TYPE_BINARY },
+            { label: 'No Body', value: BODY_TYPE_NONE },
           ],
           onChange: async (bodyType) => {
             if (bodyType === activeRequest.bodyType) return;
@@ -179,7 +179,7 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
                 id: 'switched-method',
                 message: (
                   <>
-                    请求方式已切换为 <InlineCode>POST</InlineCode>
+                    请求方式切换为 <InlineCode>POST</InlineCode>
                   </>
                 ),
               });
